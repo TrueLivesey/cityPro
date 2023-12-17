@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="
+    Сити Про — это команда опытных специалистов, посвятивших свою деятельность созданию передовых решений в сфере восстановления и окраски поверхностей. Мы специализируемся на реставрации лакокрасочных покрытий объектов, включая окна, двери, предметы интерьера и экстерьера, предоставляя высококачественные услуги профессиональной окраски. Наше призвание — превращать идеи в реальность, придавая поверхностям новое воплощение и сохраняя их естественную красоту"
+    />
+    <title>Сити Про — Главная страница</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script
+      defer
+      src="https://api-maps.yandex.ru/v3/?apikey=c30c3853-4983-4fe2-a202-1760b2b0fb31&lang=ru_RU"
+    ></script>
+    <script defer src="js/main.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      @include('sections/header.html')
+      <main class="main">
+        @include('sections/about.html') @include('sections/pluses.html')
+        @include('sections/services.html') @include('sections/trust.html')
+        @include('sections/portfolio.html') @include('sections/request.html')
+        @include('sections/contacts.html')
+      </main>
+      @include('sections/footer.html')
+      <a href="#top" title="Переместиться наверх" class="back-to-top back-to-top--hide"
+        ><svg width="153" height="153" class="back-to-top__icon">
+          <use xlink:href="#back-to-top"></use>
+        </svg>
+      </a>
+    </div>
+    @include('sections/modal.html') @include('sections/modal-mobile.html')
+    @include('sections/sprite.html')
+  </body>
+</html>

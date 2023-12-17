@@ -1,0 +1,138 @@
+@import './blocks/portfolio-swiper';
+
+.portfolio {
+  margin-bottom: 13.625rem;
+
+  &__title-block {
+    position: relative;
+    max-width: 31.375rem;
+    padding: 1.6875rem 1rem 0 var(--section-padding);
+    z-index: 1;
+    border-radius: var(--border-radius-section) 0 0 0;
+    background-color: var(--color-section-bg);
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 3.875rem;
+      height: 3.6875rem;
+      background: no-repeat url('../images/section-graphic.svg');
+      background-size: cover;
+    }
+  }
+
+  &__title {
+    line-height: 100%;
+  }
+
+  &__content {
+    position: relative;
+    min-height: 30.3125rem;
+    margin-top: -3.625rem;
+    border-radius: 0 var(--border-radius-section) var(--border-radius-section) var(--border-radius-section);
+    background-color: var(--color-section-bg);
+  }
+
+  &__swiper-wrapper {
+    position: absolute;
+    top: 6.25rem;
+    left: 0;
+    max-width: 73.125rem;
+    width: 100%;
+    height: 100%;
+    padding: 0 var(--section-padding);
+  }
+}
+
+// ----- Медиа-запросы -----
+// 1024px
+@include media('max', 'xl') {
+  .portfolio {
+    &__title-block {
+      max-width: 37.5rem;
+      padding-right: var(--section-padding);
+      margin: 0 auto;
+
+      &::before {
+        content: url('');
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 3.875rem;
+        height: 3.6875rem;
+        background: no-repeat top right url('../images/section-graphic.svg');
+        transform: scale(-1, 1);
+        will-change: transform;
+      }
+    }
+
+    &__content {
+      padding-top: 3.5rem;
+      margin-top: -0.8125rem;
+      border-radius: 0 0 var(--border-radius-section) var(--border-radius-section);
+    }
+    
+    &__swiper-wrapper {
+      position: relative;
+      top: auto;
+      left: auto;
+    }    
+  }
+}
+
+// 768px
+@include media('max', 'lg') {
+  .portfolio {
+    &__content {
+      padding-bottom: 1.875rem;
+    }
+
+    &__title-block {
+      padding-top: 2.25rem;
+    }
+
+    &__swiper-wrapper {
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+  }
+}
+
+// 480px
+@include media('max', 'sm') {
+  .portfolio {
+    margin-bottom: 5rem;
+
+    &__content {
+      padding-top: 1.3125rem;
+      padding-bottom: 0.5625rem;
+      margin-top: 0;
+    }
+
+    &__title-block {
+      padding: 1.1875rem 1.25rem 0;
+
+      &::before {
+        content: '';
+        top: -1px;
+        left: 0;
+        background: no-repeat top left url('../images/section-graphic-mobile.svg');
+        transform: none;
+      }
+
+      &::after {
+        content: '';
+        top: -1px;
+        right: 0;
+        background: no-repeat url('../images/section-graphic-mobile.svg');
+        transform: scale(-1, 1);
+      }
+    }
+
+    &__cut {
+      bottom: -2.4375rem;
+    }
+  }
+}

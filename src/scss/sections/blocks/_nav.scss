@@ -1,0 +1,162 @@
+.header {
+  .nav {
+    display: flex;
+    align-items: center;
+    width: 60.07%;
+    margin-right: 2.5rem;
+    z-index: 98;
+  
+    &__list {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      gap: 1rem;
+      margin-top: -0.25rem;
+    }
+  
+    &__link {
+      display: block;
+      text-align: center;
+      font-size: 1.125rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      transition: color var(--transition-link);
+    }
+  
+    &-contacts {
+      display: none;
+    }
+  }
+}
+
+.footer {
+  .nav {
+    margin-bottom: 1.25rem;
+
+    &__link {
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 260%;
+    }
+  }
+}
+
+// ----- Медиа-запросы -----
+@media(hover: hover) {
+  .nav {
+    &__link {
+      &:focus-visible {
+        outline-offset: var(--outline-offset);
+        outline: var(--outline-blue);
+        color: var(--color-blue-darker);
+      }
+
+      &:hover {
+        color: var(--color-blue);
+      }
+
+      &:active {
+        color: var(--color-blue-darker);
+      }
+    }
+  }
+}
+
+@media(hover: none) {
+  .nav {
+    &__link {
+      &:focus-visible {
+        outline-offset: var(--outline-offset);
+        outline: var(--outline-blue);
+        color: var(--color-blue-darker);
+      }
+      
+      &:active {
+        color: var(--color-blue-darker-2);
+      }
+    }
+    
+    &-contacts {
+      &__link {
+        &:active {
+          .nav-contacts__icon {
+            fill: var(--color-blue-darker-2);
+          }
+        }
+      }
+    }
+  }
+}
+
+// 1024px
+@include media('max', 'xl') {
+  .header {
+    .nav {
+      visibility: hidden;
+      position: absolute;
+      top: -414px;
+      right: 0;
+      flex-direction: column;
+      gap: 2rem;
+      width: 100%;
+      padding: 2rem 0;
+      margin-right: 0;
+      background-color: var(--color-white);
+      border-radius: 0 0 var(--border-radius) var(--border-radius);
+      transition: transform var(--transition), visibility var(--transition);
+      will-change: transform;
+  
+      &__list {
+        display: block;
+        padding: 0;
+        margin-top: 0;
+      }
+  
+      &__item {
+        &:not(:last-child) {
+          margin-bottom: 1rem;
+        }
+      }
+  
+      &__link {
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 2.5rem;
+      }
+  
+      &-contacts {
+        display: flex;
+        gap: 1.6875rem;
+  
+        &__icon {
+          fill: var(--color-blue-darker);
+        }
+      }
+    }
+  
+    &.open .nav {
+      visibility: visible;
+      transform: translateY(100%);
+    }
+  }
+}
+
+@include media('max', 'lg') {
+  .footer {
+    .nav {
+      width: 100%;
+      margin-bottom: 1rem;
+
+      &__list {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+    }
+  }
+}

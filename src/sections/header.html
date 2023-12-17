@@ -1,0 +1,175 @@
+<header class="header">
+  <div class="header__wrapper">
+    <div class="header__content">
+      <a aria-label="Главная страница" class="logo">
+        <img src="images/logo.svg" alt="Логотип Сити Про" class="logo__img" />
+      </a>
+      <button id="burger" class="burger">
+        <span class="burger__span"></span>
+        <span class="burger__span"></span>
+        <span class="burger__span"></span>
+      </button>
+      <nav id="nav" aria-label="Основная" class="nav">
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a href="#about" aria-label="О нас" class="nav__link">О&nbsp;нас</a>
+          </li>
+          <li class="nav__item">
+            <a href="#services" aria-label="Посмотреть виды услуг" class="nav__link">Виды услуг</a>
+          </li>
+          <li class="nav__item">
+            <a href="#portfolio" aria-label="Посмотреть портфолио" class="nav__link">Портфолио</a>
+          </li>
+          <li class="nav__item">
+            <a href="#request" aria-label="Оставить заявку" class="nav__link">Оставьте заявку</a>
+          </li>
+          <li class="nav__item">
+            <a href="#contacts" aria-label="Контакты" class="nav__link">Контакты</a>
+          </li>
+        </ul>
+        <ul class="nav-contacts">
+          <li class="nav-contacts__item">
+            <a
+              href="#"
+              target="_blank"
+              aria-label="Открыть страницу во вконтакте"
+              class="nav-contacts__link"
+            >
+              <svg width="50" height="50" class="nav-contacts__icon">
+                <use xlink:href="images/sprite.svg#vk"></use>
+              </svg>
+            </a>
+          </li>
+          <li class="nav-contacts__item">
+            <a
+              href="#"
+              target="_blank"
+              aria-label="Открыть страницу в телеграм"
+              class="nav-contacts__link"
+            >
+              <svg width="50" height="50" class="nav-contacts__icon">
+                <use xlink:href="images/sprite.svg#tg"></use>
+              </svg>
+            </a>
+          </li>
+          <li class="nav-contacts__item">
+            <a
+              href="#"
+              target="_blank"
+              aria-label="Открыть страницу в вотсапп"
+              class="nav-contacts__link"
+            >
+              <svg width="50" height="50" class="nav-contacts__icon">
+                <use xlink:href="images/sprite.svg#whatsapp"></use>
+              </svg>
+            </a>
+          </li>
+          <li class="nav-contacts__item">
+            <a
+              href="#"
+              target="_blank"
+              aria-label="Открыть страницу в вайбере"
+              class="nav-contacts__link"
+            >
+              <svg width="50" height="50" class="nav-contacts__icon">
+                <use xlink:href="images/sprite.svg#viber"></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div class="header__phone">
+        <a href="tel:+79000000000" aria-label="Заказать звонок" class="header__link">
+          <div class="header__phone-block">
+            <svg width="16" height="16" class="header__phone-icon">
+              <use xlink:href="images/sprite.svg#phone"></use>
+            </svg>
+          </div>
+          <span class="header__phone-text">+7 900 000 00 00</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="header__swiper-block">
+    <div class="swiper header-swiper">
+      <!-- Обёртка -->
+      <div class="swiper-wrapper header-swiper__wrapper">
+        <!-- Слайды -->
+        <!-- 1 -->
+        <div id="header-slide-1" class="swiper-slide header-slide">
+          <div class="header-slide__content">
+            <h2 id="header-slide-title-1" class="header-slide__title">
+              Реставрация лакокрасочного покрытия
+            </h2>
+            <div class="header-slide__img-block">
+              <picture class="header-slide__picture">
+                <source srcset="images/header-slide_1.webp" />
+                <img
+                  src="images/header-slide_1.png"
+                  width="505"
+                  height="496"
+                  alt="Человек в специальном костюме и маске с пневмопистолетом в руках"
+                  class="header-slide__img"
+                />
+              </picture>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div id="header-slide-2" class="swiper-slide header-slide">
+          <div class="header-slide__content">
+            <h2 class="header-slide__title">
+              Профессиональная окраска <br class="header-slide__br" />интерьера
+            </h2>
+            <div class="header-slide__img-block">
+              <picture class="header-slide__picture">
+                <source srcset="images/header-slide_2.webp" />
+                <img
+                  src="images/header-slide_2.png"
+                  width="470"
+                  height="450"
+                  alt="Люди в специальных костюмах, красящие металлические трубы"
+                  class="header-slide__img"
+                />
+              </picture>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div id="header-slide-3" class="swiper-slide header-slide">
+          <div class="header-slide__content">
+            <h2 class="header-slide__title">
+              Профессиональная окраска <br class="header-slide__br" />экстерьера
+            </h2>
+            <div class="header-slide__img-block">
+              <picture class="header-slide__picture">
+                <source srcset="images/header-slide_3.webp" />
+                <img
+                  src="images/header-slide_3.png"
+                  width="450"
+                  height="466"
+                  alt="Человек в специальном костюме, красящий металлический предмет"
+                  class="header-slide__img"
+                />
+              </picture>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="header-swiper__container">
+      <div class="header-swiper__controls">
+        <button id="js-modal-open" class="btn-default header-swiper__btn js-modal-open">
+          Получить консультацию
+        </button>
+        <div class="header-swiper__pagination-wrapper">
+          <!-- Пагинация -->
+          <div class="header-swiper__pagination"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+>

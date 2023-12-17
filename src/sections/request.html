@@ -1,0 +1,68 @@
+<section id="request" class="request">
+  <div class="container request__container">
+    <div class="request__content">
+      <div class="request__title-block">
+        <h2 class="section-title request__title">Оставьте заявку</h2>
+      </div>
+      <form id="request-form" class="request-form">
+        <div class="request-form__item">
+          <label for="request-form-name" class="request-form__label">
+            <input
+              id="request-form-name"
+              name="request-form-name"
+              type="text"
+              placeholder="Ваше имя"
+              class="request-form__input"
+            />
+          </label>
+        </div>
+        <div class="request-form__item">
+          <label for="request-form-phone" class="request-form__label">
+            <input
+              id="request-form-phone"
+              name="request-form-phone"
+              type="text"
+              placeholder="Номер телефона*"
+              class="request-form__input"
+            />
+          </label>
+        </div>
+        <div class="request-form__item request-form__item-textarea">
+          <label for="request-form-message" class="request-form__label">
+            <textarea
+              name="request-form-message"
+              id="request-form-message"
+              placeholder="Ваше сообщение"
+              class="request-form__textarea"
+            ></textarea>
+          </label>
+        </div>
+        <div class="request-form__item request-form__check-wrapper">
+          <label
+            for="request-form-check"
+            tabindex="0"
+            class="request-form__label request-form__label-check"
+          >
+            <input
+              id="request-form-check"
+              name="request-form-check"
+              type="checkbox"
+              required
+              class="request-form__input request-form__check"
+            />
+            <span class="request-form__custom-check"></span>
+            <span class="descr-default request-form__check-descr"
+              >Нажимая кнопку &laquo;ОТПРАВИТЬ&raquo; вы&nbsp;соглашаетесь на&nbsp;обработку ваших
+              данных</span
+            >
+          </label>
+        </div>
+        <div class="request-form__item request-form__submit-wrapper">
+          <label for="request-submit" class="request-form__label">
+            <input id="request-submit" type="submit" name="submit" class="request-form__submit" />
+          </label>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,259 @@
+.footer {
+  background-color: var(--color-section-bg);
+
+  &__content {
+    padding: 2.5625rem var(--section-padding) 3.25rem;
+  }
+
+  &__top {
+    display: flex;
+    margin-bottom: 2.625rem;
+  }
+
+  &__wrapper {
+    max-width: 25rem;
+    padding-top: 0.75rem;
+    margin-right: 1.875rem;
+  }
+
+  &__logo-wrapper {
+    margin-bottom: 2.5rem;
+  }
+
+  &__logo {
+    width: 18.4375rem;
+    max-height: 6.6875rem;
+  }
+
+  &__nav-wrapper {
+    margin-right: 3.875rem;
+  }
+
+  &__contacts-and-socials {
+    padding-top: .5rem;
+  }
+
+  &__address {
+    margin-bottom: 1.25rem;
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 640px;
+  }
+
+  &__copy {
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  &__descr-dev {
+    transition: color var(--transition-link);
+  }
+
+  &__icon-dev-wrapper {
+    transition: var(--transition-link);
+  }
+
+  &__developed-by {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+  }
+}
+
+// ----- Медиа-запросы-----
+@media(hover: hover) {
+  .footer {
+    &__developed-by {
+      &:focus-visible {
+        outline-offset: var(--outline-offset);
+        outline: var(--outline-blue);
+
+        .footer__descr-dev {
+          color: var(--color-blue);
+        }
+
+        .footer__icon-dev-wrapper {
+          fill: var(--color-blue);
+        }
+      }
+
+      &:hover {
+        .footer__descr-dev {
+          color: var(--color-blue);
+        }
+
+        .footer__icon-dev-wrapper {
+          fill: var(--color-blue);
+        }
+      }
+
+      &:active {
+        .footer__descr-dev {
+          color: var(--color-blue-darker);
+        }
+
+        .footer__icon-dev-wrapper {
+          fill: var(--color-blue-darker);
+        }
+      }
+    }
+  }
+}
+
+@media(hover: none) {
+  .footer {
+    &__developed-by {
+      &:focus-visible {
+        outline-offset: var(--outline-offset);
+        outline: var(--outline-blue);
+
+        .footer__descr-dev {
+          color: var(--color-blue);
+        }
+
+        .footer__icon-dev-wrapper {
+          fill: var(--color-blue);
+        }
+      }
+
+      &:active {
+        .footer__descr-dev {
+          color: var(--color-blue-darker);
+        }
+
+        .footer__icon-dev-wrapper {
+          fill: var(--color-blue-darker);
+        }
+      }
+    }
+  }
+}
+
+// 768px
+@include media('max', 'lg') {
+  .footer {
+    &__top {
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    &__wrapper {
+      padding: 0;
+      margin: 0;
+      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    &__logo-wrapper {
+      margin: 0;
+    }
+
+    &__logo {
+      max-width: 13rem;
+    }
+
+    &__descr {
+      text-align: center;
+    }
+    
+    &__nav-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      order: 3;
+      margin: 0;
+    }
+
+    &__contacts-and-socials {
+      padding: 0;
+    }
+
+    &__descr {
+      max-width: 100%;
+    }
+
+    &__address {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    &__bottom {
+      max-width: 100%;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .socials {
+      justify-content: center;
+    }
+
+    .privacy {
+      display: block;
+    }
+  }
+}
+
+// 480px
+@include media('max', 'sm') {
+  .footer {
+    border-radius: var(--border-radius-section) var(--border-radius-section) 0 0;
+
+    &__content {
+      padding: 1.875rem 1.25rem 1.875rem;
+    }
+
+    &__wrapper {
+      gap: 0.9375rem;
+    }
+
+    &__top {
+      gap: 0.5625rem;
+      margin-bottom: 1.3125rem;
+    }
+
+    &__logo {
+      max-width: 12.5rem;
+    }
+
+    &__descr {
+      line-height: 121%;
+    }
+
+    &__address {
+      display: none;
+      visibility: hidden;
+    }
+    
+    &__socials {
+      display: none;
+      visibility: hidden;
+    }
+
+    .nav {
+      display: none;
+      visibility: hidden;
+    }
+
+    &__bottom {
+      gap: 1.3125rem;
+    }
+
+    &__descr-dev {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+  }
+}

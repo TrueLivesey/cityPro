@@ -1,0 +1,35 @@
+.map {
+  width: 100%;
+  min-width: 10rem;
+  height: 23.125rem;
+
+  ymaps {
+    border-radius: 0.9375rem;
+  }
+
+  canvas {
+    padding-right: 0;
+  }
+}
+
+// ----- Медиа-запросы -----
+// 1024
+@include media('max', 'xl') {
+  .map {
+    height: 100%;
+  }
+}
+
+// 768px
+@include media('max', 'lg') {
+  .map {
+    height: 26rem;
+  }
+}
+
+// 480px
+@include media('max', 'lg') {
+  .map {
+    height: 17.5rem;
+  }
+}

@@ -1,0 +1,90 @@
+:root {
+  // ----- Цвета -----
+  // цвета элементов
+  --color-main-text: #272727;
+  --color-section-title: #465067;
+  --color-section-subtitle: #54994B;
+  --color-input: #F0F0F0;
+  --color-section-bg: #E8E8E8;
+  --color-modal-bg: #EEEEEE;
+  --color-rzhd: #C4151C;
+
+  // оттенки
+  --color-white: #fff;
+  --color-gray: #8C8C8C;
+  --color-gray-lighter: #E8E8E8;
+  --color-gray-lighter-2: #D0D0D0;
+  --color-gray-darker: #878787;
+  --color-green: #4BAA3F;
+  --color-green-lighter: #73A56C;
+  --color-green-lighter-2: #79A174;
+  --color-green-lighter-3: #e7ffe3;
+  --color-green-darker: #4b7a44;
+  --color-blue: #0066FF;
+  --color-blue-lighter: #79AEFF;
+  --color-blue-darker: #0041A4;
+  --color-blue-darker-2: #002e72;
+  --color-yellow: #F1FF0F;
+  --color-yellow-lighter: #F6FF69;
+  --color-yellow-darker: #D2BB00;
+  --color-black: #272727;
+  --color-black-lighter: #333132;
+
+  // градиенты
+  --gradient-btn: linear-gradient(88deg, #0041A4 3.4%, #00A386 98.93%);
+  --gradient-btn-state: linear-gradient(88deg, #00A386 98.93%, #0041A4 3.4%);
+  --gradient-media: linear-gradient(88deg, #0041A4 3.4%, #00A386 98.93%);
+  --gradient-request: linear-gradient(rgba(217, 233, 215, 1), rgba(179, 211, 174, 1));
+
+  // ----- Тени -----
+  --shadow-btn: 0px 10px 50px 0px rgba(0, 221, 185, 0.25);
+
+  // ----- Обводка -----
+  --border-radius: 0.9375rem;           // 15px
+  --border-radius-btn: 0.9375rem;       // 15px
+  --border-radius-img: 1.25rem;         // 20px
+  --border-radius-section: 2.1875rem;   // 35px
+
+  // ----- Переходы -----
+  --long-transition: .3s ease-in-out;
+  --transition: .2s ease-in-out;
+  --transition-img: .1s ease-in;
+  --transition-link: .1s ease-in-out;
+  
+  // ----- Расстояния -----
+  --gap-section-title: 1.875rem;    // 30px
+  --gap-main: 1.875rem;             // 30px
+  --gap-section-content: 3.125rem;  // 50px
+  --section-padding: 4.375rem;      // 70px
+  --gap-section: 6.25rem;           // 100px
+  
+  // ----- Outline -----
+  --outline-offset: .2rem;
+  --outline: 2px solid var(--color-green-lighter-2);
+  --outline-blue: 2px solid var(--color-blue-darker);
+
+  // ----- Шрифты -----
+  // базовый размер шрифта
+  --text-base-size: 1rem;
+  
+  // шкала типов
+  --text-scale-ratio: 1.2;
+  --text-xs: calc((1rem / var(--text-scale-ratio)) / var(--text-scale-ratio));
+  --text-sm: calc(var(--text-xs) * var(--text-scale-ratio));
+  --text-md: calc(var(--text-sm) * var(--text-scale-ratio) * var(--text-scale-ratio));
+  --text-lg: calc(var(--text-md) * var(--text-scale-ratio));
+  --text-xl: calc(var(--text-lg) * var(--text-scale-ratio));
+
+  @media (max-width: 768px) {
+    --gap-section: 5rem;
+  }
+
+  @media (max-width: 480px) {
+    --gap-main: 1.25rem;
+    --gap-section: 3.125rem;
+    --border-radius-section: 1.25rem;
+  }
+}
+
+// Размеры для медиа-запросов
+$sizes: ("xs":320px, "sm":480px, "md":576px, "lg":768px, "xl":1024px);

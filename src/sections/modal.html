@@ -1,0 +1,98 @@
+<div id="js-modal" class="modal js-modal">
+  <div class="modal__body js-modal-body modal-blur">
+    <div class="modal__content">
+      <div class="modal__header">
+        <div class="modal__img-block">
+          <img
+            width="260"
+            height="94"
+            src="images/logo.svg"
+            alt="Логотип Сити Про"
+            class="modal__img"
+          />
+        </div>
+        <button
+          id="js-modal-close-btn"
+          aria-label="Закрыть"
+          class="modal__close-btn modal-close-btn"
+        >
+          <svg width="56" height="56" aria-hidden="true" class="modal__close-icon">
+            <use xlink:href="images/sprite.svg#close-btn"></use>
+          </svg>
+        </button>
+      </div>
+      <div class="modal__main">
+        <div class="modal__text-block">
+          <h3 class="modal__title">Оставьте заявку</h3>
+          <p class="modal__descr">
+            И&nbsp;наш менеджер свяжется с&nbsp;вами в&nbsp;ближайшее время для уточнения деталей
+          </p>
+        </div>
+        <form id="modal-form" class="modal-form">
+          <div class="modal-form__item">
+            <label for="modal-form-name" class="modal-form__label">
+              <input
+                id="modal-form-name"
+                name="modal-form-name"
+                type="text"
+                placeholder="Ваше имя"
+                class="modal-form__input"
+              />
+            </label>
+          </div>
+          <div class="modal-form__item">
+            <label for="modal-form-phone" class="modal-form__label">
+              <input
+                id="modal-form-phone"
+                name="modal-form-phone"
+                type="text"
+                placeholder="Номер телефона*"
+                class="modal-form__input"
+              />
+            </label>
+          </div>
+          <div class="modal-form__item modal-form__item-textarea">
+            <label for="modal-form-message" class="modal-form__label">
+              <textarea
+                name="modal-form-message"
+                id="modal-form-message"
+                placeholder="Ваше сообщение"
+                class="modal-form__textarea"
+              ></textarea>
+            </label>
+          </div>
+          <div class="modal-form__item modal-form__check-wrapper">
+            <label
+              for="modal-form-check"
+              tabindex="0"
+              class="modal-form__label modal-form__label-check"
+            >
+              <input
+                id="modal-form-check"
+                name="modal-form-check"
+                type="checkbox"
+                required
+                class="modal-form__input modal-form__check"
+              />
+              <span class="modal-form__custom-check"></span>
+              <span class="descr-default modal-form__check-descr"
+                >Нажимая кнопку &laquo;ОТПРАВИТЬ&raquo; вы&nbsp;соглашаетесь на&nbsp;обработку ваших
+                данных</span
+              >
+            </label>
+          </div>
+          <div class="modal-form__item modal-form__btn-wrapper">
+            <button
+              id="modal-btn"
+              type="submit"
+              aria-label="Отправить"
+              class="btn-default modal-form__btn"
+            >
+              Отправить
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
