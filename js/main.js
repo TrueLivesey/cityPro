@@ -3445,7 +3445,8 @@ function loadServicesSwiper() {
           clickable: true
         }
       },
-      768: {
+      480: {
+        spaceBetween: 30,
         slidesPerView: 'auto',
         loop: false,
         pagination: 'none'
