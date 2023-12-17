@@ -51,7 +51,8 @@ function loadServicesSwiper() {
         },
       },
 
-      768: {
+      480: {
+        spaceBetween: 30,
         slidesPerView: 'auto',
         loop: false,
         pagination: 'none',
