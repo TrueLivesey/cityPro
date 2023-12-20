@@ -6,7 +6,7 @@
   &__title-block {
     position: relative;
     max-width: 31.375rem;
-    padding: 1.6875rem 1rem 0 var(--section-padding);
+    padding: 1.875rem 1rem 0 var(--section-padding);
     z-index: 1;
     border-radius: var(--border-radius-section) 0 0 0;
     background-color: var(--color-section-bg);
@@ -30,7 +30,7 @@
   &__content {
     position: relative;
     min-height: 30.3125rem;
-    margin-top: -3.625rem;
+    margin-top: -3.8125rem;
     border-radius: 0 var(--border-radius-section) var(--border-radius-section) var(--border-radius-section);
     background-color: var(--color-section-bg);
   }
