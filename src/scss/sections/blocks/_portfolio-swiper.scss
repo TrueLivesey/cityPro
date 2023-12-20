@@ -71,7 +71,7 @@
   &__prev,
   &__next {
     position: absolute;
-    bottom: 1.3125rem;
+    bottom: -6rem;
     width: 3.75rem;
     height: 3.125rem;
     z-index: 99;
@@ -80,12 +80,12 @@
   }
 
   &__prev {
-    left: 0;
+    left: 4.0625rem;
     background: no-repeat center url('../images/navigation-arrow.svg');
   }
 
   &__next {
-    left: 275px;
+    left: 21.5625rem;
     background: no-repeat center url('../images/navigation-arrow.svg');
     transform: scale(-1, 1);
     will-change: transform;

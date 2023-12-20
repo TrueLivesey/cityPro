@@ -67,6 +67,7 @@
   }
 }
 
+// 1024px
 @include media('max', 'xl') {
   .about {
     &__title-block {
@@ -103,6 +104,16 @@
 // 768px
 @include media('max', 'lg') {
   .about {
+    &__title-block {
+      &::before {
+        top: -1px;
+      }
+
+      &::after {
+        top: -1px;
+      }
+    }
+    
     &__title {
       padding-top: 2.25rem;
     }

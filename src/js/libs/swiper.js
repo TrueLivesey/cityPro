@@ -189,7 +189,7 @@ function loadPortfolioSwiper() {
   }
 
   // Обёрнутая в throtle функция createPagination()
-  const throttledCreatePagination = throttle(createPagination, 1000);
+  const throttledCreatePagination = throttle(createPagination, 800);
 
   // Обработчик изменения ширины экрана. Меняем тип пагинации, рендерим его,
   // удаляем нынешний свайпер и заново его инициализируем

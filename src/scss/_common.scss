@@ -56,6 +56,13 @@ body.lock {
   margin: 0 auto;
 }
 
+.main-title {
+  &.hidden {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
 .section-title {
   color: var(--color-section-title);
   font-size: 2.8125rem;
@@ -183,7 +190,7 @@ body.lock {
     backdrop-filter: blur(0px);
   }
   to {
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(12.5px);
   }
 }
 
@@ -191,7 +198,7 @@ body.lock {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  width: 9.5rem;
+  width: 7.969vw;
   height: 9.5rem;
   font-size: 1.5rem;
   cursor: pointer;
@@ -202,8 +209,6 @@ body.lock {
   
   &__icon {
     fill: var(--color-blue-lighter);
-    // --blue: var(--color-blue-lighter);
-    // --white: var(--color-white);
     transition: fill var(--transition-link);
   }
 
@@ -350,6 +355,7 @@ body.lock {
   .back-to-top {
     width: 4rem;
     height: 4rem;
+    right: 0.9375rem;
   }
 }
 

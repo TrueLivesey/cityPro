@@ -21,32 +21,28 @@
     background-color: var(--color-section-bg);
 
     &::before {
-      content: '';
+      content: url('../images/section-graphic.svg');
       position: absolute;
       top: 0;
       left: 0;
       width: 3.875rem;
       height: 3.6875rem;
-      background: no-repeat url('../images/section-graphic.svg');
-      background-size: cover;
       transform: scale(-1, 1);
       will-change: transform;
     }
 
     &::after {
-      content: '';
+      content: url('../images/section-graphic.svg');
       position: absolute;
       top: 0;
       right: 0;
       width: 3.875rem;
       height: 3.6875rem;
-      background: no-repeat url('../images/section-graphic.svg');
-      background-size: cover;
     }
   }
 
   &__title {
-    padding-top: 1.6875rem;
+    padding-top: 1.75rem;
   }
 
   &__content {
@@ -134,7 +130,7 @@
     &__icon-block {
       height: 5.25rem;
       padding-top: 11.5rem;
-      padding-bottom: 2.125rem;
+      padding-bottom: 2.25rem;
       z-index: 2;
     }
 
@@ -341,11 +337,35 @@
   }
 }
 
+// 1024px
+@include media('max', 'xl') {
+  .services {
+    &__title-block {  
+      &::before {
+        background-size: contain;
+      }
+  
+      &::after {
+        background-size: contain;
+      }
+    }
+
+    &__title {
+      padding-top: 1.75rem;
+    }
+  }
+}
+
 // 768px
 @include media('max', 'lg') {
   .services {
+    &__title-block {  
+      padding-bottom: 0.3125rem;
+    }
+
     &__title {
       padding-top: 2.25rem;
+      line-height: 100%;
     }
   }
 }

@@ -51,25 +51,23 @@
       background: linear-gradient(rgba(217, 233, 215, 1), rgba(179, 211, 174, 1));
 
       &::before {
-        content: url('');
+        content: url('../images/section-graphic.svg');
         position: absolute;
         top: 0;
         left: 0;
         width: 3.875rem;
         height: 3.875rem;
-        background: no-repeat url('../images/section-graphic.svg');
         transform: scale(-1, 1);
         will-change: transform;
       }
 
       &::after {
-        content: '';
+        content: url('../images/section-graphic.svg');
         position: absolute;
         top: 0;
         right: 0;
         width: 3.875rem;
         height: 3.875rem;
-        background: no-repeat url('../images/section-graphic.svg');
       }
     }
 
@@ -104,18 +102,18 @@
       border-radius: 2.1875rem;
 
       &::before {
+        content: url('../images/section-graphic-mobile.svg');
         top: -1px;
         width: 2.4375rem;
         height: 3.1875rem;
-        background: no-repeat url('../images/section-graphic-mobile.svg');
         transform: scale(1, 1);
       }
 
       &::after {
+        content: url('../images/section-graphic-mobile.svg');
         top: -1px;
         width: 2.4375rem;
         height: 3.1875rem;
-        background: no-repeat url('../images/section-graphic-mobile.svg');
         transform: scale(-1, 1);
       }
     }

@@ -12,14 +12,12 @@
     background-color: var(--color-section-bg);
 
     &::after {
-      content: '';
+      content: url('../images/section-graphic.svg');
       position: absolute;
       top: 0;
       right: 0;
       width: 3.875rem;
       height: 3.6875rem;
-      background: no-repeat url('../images/section-graphic.svg');
-      background-size: cover;
     }
   }
 
@@ -54,17 +52,17 @@
 
     &__title-block {
       max-width: 37.5rem;
+      padding-top: 1.6875rem;
       padding-right: var(--section-padding);
       margin: 0 auto;
 
       &::before {
-        content: url('');
+        content: url('../images/section-graphic.svg');
         position: absolute;
         top: 0;
         left: 0;
         width: 3.875rem;
         height: 3.6875rem;
-        background: no-repeat top right url('../images/section-graphic.svg');
         transform: scale(-1, 1);
         will-change: transform;
       }
@@ -89,7 +87,7 @@
 @include media('max', 'lg') {
   .portfolio {
     &__title-block {
-      padding-top: 2.25rem;
+      padding-top: 2.3125rem;
     }
 
     &__swiper-wrapper {
