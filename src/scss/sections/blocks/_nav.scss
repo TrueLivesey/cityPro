@@ -27,6 +27,14 @@
   
     &-contacts {
       display: none;
+
+      &__item {
+      }
+
+      &__link {
+        display: block;
+        max-height: 3.125rem;
+      }
     }
   }
 }
@@ -40,6 +48,7 @@
       font-style: normal;
       font-weight: 600;
       line-height: 260%;
+      transition: color var(--transition-link);
     }
   }
 }
@@ -81,6 +90,11 @@
     
     &-contacts {
       &__link {
+        &:focus-visible {
+          outline-offset: var(--outline-offset);
+          outline: var(--outline-blue);
+        }
+
         &:active {
           .nav-contacts__icon {
             fill: var(--color-blue-darker-2);
@@ -138,7 +152,7 @@
       }
     }
   
-    &.open .nav {
+    &.menu-open .nav {
       visibility: visible;
       transform: translateY(100%);
     }

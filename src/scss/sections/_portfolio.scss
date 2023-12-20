@@ -50,6 +50,8 @@
 // 1024px
 @include media('max', 'xl') {
   .portfolio {
+    margin-bottom: var(--gap-section);
+
     &__title-block {
       max-width: 37.5rem;
       padding-right: var(--section-padding);
@@ -70,6 +72,7 @@
 
     &__content {
       padding-top: 3.5rem;
+      padding-bottom: 1.875rem;
       margin-top: -0.8125rem;
       border-radius: 0 0 var(--border-radius-section) var(--border-radius-section);
     }
@@ -85,10 +88,6 @@
 // 768px
 @include media('max', 'lg') {
   .portfolio {
-    &__content {
-      padding-bottom: 1.875rem;
-    }
-
     &__title-block {
       padding-top: 2.25rem;
     }
@@ -129,6 +128,10 @@
         background: no-repeat url('../images/section-graphic-mobile.svg');
         transform: scale(-1, 1);
       }
+    }
+
+    &__title {
+      padding: 0 2rem;
     }
 
     &__cut {

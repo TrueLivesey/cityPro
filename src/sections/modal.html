@@ -36,6 +36,7 @@
                 name="modal-form-name"
                 type="text"
                 placeholder="Ваше имя"
+                aria-label="Ваше имя"
                 class="modal-form__input"
               />
             </label>
@@ -47,6 +48,8 @@
                 name="modal-form-phone"
                 type="text"
                 placeholder="Номер телефона*"
+                aria-label="Номер телефона"
+                aria-required="true"
                 class="modal-form__input"
               />
             </label>
@@ -57,6 +60,7 @@
                 name="modal-form-message"
                 id="modal-form-message"
                 placeholder="Ваше сообщение"
+                aria-label="Ваше сообщение"
                 class="modal-form__textarea"
               ></textarea>
             </label>
@@ -72,6 +76,8 @@
                 name="modal-form-check"
                 type="checkbox"
                 required
+                aria-required="true"
+                aria-label="Согласие на обработку данных"
                 class="modal-form__input modal-form__check"
               />
               <span class="modal-form__custom-check"></span>

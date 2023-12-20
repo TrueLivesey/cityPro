@@ -201,9 +201,10 @@ body.lock {
   transition: visibility var(--transition), opacity var(--transition), fill var(--transition);
   
   &__icon {
-    --blue: var(--color-blue-lighter);
-    --white: var(--color-white);
-    transition: fill var(--transition);
+    fill: var(--color-blue-lighter);
+    // --blue: var(--color-blue-lighter);
+    // --white: var(--color-white);
+    transition: fill var(--transition-link);
   }
 
   &--active {
@@ -271,19 +272,19 @@ body.lock {
       outline: var(--outline-blue);
       
       .back-to-top__icon {
-        --blue: var(--color-blue);
+        fill: var(--color-blue);
       }
     }
 
     &:hover {
       .back-to-top__icon {
-        --blue: var(--color-blue);
+        fill: var(--color-blue);
       }
     }
 
     &:active {
       .back-to-top__icon {
-        --blue: var(--color-blue-darker);
+        fill: var(--color-blue-darker);
       }
     }
   }
@@ -324,13 +325,13 @@ body.lock {
       outline: var(--outline-blue);
       
       .back-to-top__icon {
-        --blue: var(--color-blue);
+        fill: var(--color-blue);
       }
     }
 
     &:active {
       .back-to-top__icon {
-        --blue: var(--color-blue-darker);
+        fill: var(--color-blue-darker);
       }
     }
   }

@@ -1,4 +1,5 @@
 .modal {
+  display: block;
   position: fixed;
   top: 0;
   left: 0;
@@ -279,6 +280,54 @@
 
 @media (hover: none) {
   .modal-form {
-    
+    .modal-form {
+      &__input {
+        &:focus-visible {
+          outline-offset: 0;
+          outline: var(--outline);
+        }
+      }
+  
+      &__textarea {
+        &:focus-visible {
+          outline-offset: 0;
+          outline: var(--outline);
+        }
+      }
+  
+      &__label-check {
+        &:focus-visible {
+          outline: none;
+  
+          .modal-form__custom-check {
+            border: var(--outline);
+            background-color: var(--color-green-lighter-3);
+          }
+        }
+      }
+    }
+
+    &__close-btn {
+      &:focus-visible {
+        outline-offset: var(--outline-offset);
+        outline: var(--outline-blue);
+
+        .modal__close-icon {
+          stroke: var(--color-blue-darker);
+        }
+      }
+
+      &:active {
+        .modal__close-icon {
+          stroke: var(--color-blue-darker);
+        }
+      }
+    }
+  }
+}
+
+@include media('max', 'xl') {
+  .modal {
+    display: none;
   }
 }

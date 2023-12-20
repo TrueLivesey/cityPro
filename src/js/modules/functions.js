@@ -2,11 +2,11 @@ import { el, setChildren, mount } from 'redom';
 
 // Создание DOM элементов
 function createSliderCounters() {
-  const counter = el('span.header-swiper__counter');
-  const counter2 = el('span.header-swiper__counter');
+  const counter = el('span.header__counter');
+  const counter2 = el('span.header__counter');
 
-  counter.id = 'header-swiper-counter';
-  counter2.id = 'header-swiper-counter-2';
+  counter.id = 'header-counter';
+  counter2.id = 'header-counter-2';
 
   return { counter, counter2 };
 }
@@ -28,6 +28,13 @@ function addSliderCounters(sliderWrapper, pagination) {
     pagination.parentElement.insertBefore(counter2, pagination.nextSibling);
   } else {
     pagination.parentElement.insertBefore(counter, pagination);
+  }
+}
+
+// Добавление класса
+function addClass(e, className) {
+  if (!e.classList.contains(className)) {
+    e.classList.add(className);
   }
 }
 
@@ -138,6 +145,7 @@ const smoothHeight = (itemSelector, btnSelector, btnWrapper, contentSelector, te
 
 export {
   addSliderCounters,
+  addClass,
   removeClass,
   checkClass,
   focusServicesCard,

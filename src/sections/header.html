@@ -4,7 +4,7 @@
       <a aria-label="Главная страница" class="logo">
         <img src="images/logo.svg" alt="Логотип Сити Про" class="logo__img" />
       </a>
-      <button id="burger" class="burger">
+      <button id="burger" aria-label="Открыть меню" class="burger">
         <span class="burger__span"></span>
         <span class="burger__span"></span>
         <span class="burger__span"></span>
@@ -98,9 +98,9 @@
         <!-- 1 -->
         <div id="header-slide-1" class="swiper-slide header-slide">
           <div class="header-slide__content">
-            <h2 id="header-slide-title-1" class="header-slide__title">
+            <h1 id="header-slide-title-1" class="header-slide__title">
               Реставрация лакокрасочного покрытия
-            </h2>
+            </h1>
             <div class="header-slide__img-block">
               <picture class="header-slide__picture">
                 <source srcset="images/header-slide_1.webp" />
@@ -119,9 +119,9 @@
         <!-- 2 -->
         <div id="header-slide-2" class="swiper-slide header-slide">
           <div class="header-slide__content">
-            <h2 class="header-slide__title">
+            <h1 class="header-slide__title">
               Профессиональная окраска <br class="header-slide__br" />интерьера
-            </h2>
+            </h1>
             <div class="header-slide__img-block">
               <picture class="header-slide__picture">
                 <source srcset="images/header-slide_2.webp" />
@@ -140,9 +140,9 @@
         <!-- 3 -->
         <div id="header-slide-3" class="swiper-slide header-slide">
           <div class="header-slide__content">
-            <h2 class="header-slide__title">
+            <h1 class="header-slide__title">
               Профессиональная окраска <br class="header-slide__br" />экстерьера
-            </h2>
+            </h1>
             <div class="header-slide__img-block">
               <picture class="header-slide__picture">
                 <source srcset="images/header-slide_3.webp" />
@@ -159,17 +159,20 @@
         </div>
       </div>
     </div>
-    <div class="header-swiper__container">
-      <div class="header-swiper__controls">
-        <button id="js-modal-open" class="btn-default header-swiper__btn js-modal-open">
+    <div class="header__container">
+      <div class="header__controls">
+        <button
+          id="js-modal-open"
+          aria-label="Получить консультацию, модальное окно"
+          class="btn-default header__btn js-modal-open"
+        >
           Получить консультацию
         </button>
-        <div class="header-swiper__pagination-wrapper">
+        <div class="header__pagination-wrapper">
           <!-- Пагинация -->
-          <div class="header-swiper__pagination"></div>
+          <div class="header__pagination"></div>
         </div>
       </div>
     </div>
   </div>
 </header>
->

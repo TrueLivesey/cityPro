@@ -1,12 +1,10 @@
 import { removeClass } from './functions';
 import { formValidation } from './form-validation';
 
-export function showModal(modalName, mode = null, saveHeader = false) {
+export function showModal() {
   const body = document.querySelector('body');
   const wrapper = document.querySelector('.wrapper');
   const header = document.querySelector('.header__wrapper');
-  const modal = document.getElementById('js-modal');
-  const modalMobile = document.getElementById('js-modal-mobile');
   const modalLinks = document.querySelectorAll('.js-modal-open');
   const lockPadding = document.querySelectorAll('.lock-padding');
   const modalForm = document.getElementById('modal-form');
@@ -18,10 +16,12 @@ export function showModal(modalName, mode = null, saveHeader = false) {
   const modalMobileBtn = document.getElementById('modal-mobile-btn');
   const modalBtns = [modalBtn, modalMobileBtn];
 
-  // const resetValidation = formValidation();
-
-  const timeout = 300;
+  let modal = null;
+  let modalMobile = null;
+  let currentModalGlobal = null;
   let unlock = true;
+  let isMobileScreen = window.innerWidth < 1024;
+  const timeout = 300;
 
   // Проверка на наличие wrapper
   if (!wrapper) {
@@ -29,11 +29,16 @@ export function showModal(modalName, mode = null, saveHeader = false) {
     return;
   }
 
+  // Получаем ссылки на модальные окна
+  modalMobile = document.getElementById('js-modal-mobile');
+  modal = document.getElementById('js-modal');
+
   // Открытие модального окна
-  function modalOpen(currentModal) {
+  function modalOpen(currentModal, saveHeader) {
     // Добавляем хедеру класс с position: fixed, чтобы шапка была видна
     // вместе с модальным окном
-    if (saveHeader && mode === 'mobile') {
+    console.log(currentModal);
+    if (saveHeader) {
       header.classList.add('header-fixed');
       header.addEventListener(
         'click',
@@ -47,9 +52,17 @@ export function showModal(modalName, mode = null, saveHeader = false) {
       );
     }
 
+    const errors = document.querySelectorAll('.just-validate-error-label');
+
+    // Удаляем ошибки при открытии модального окна
+    if (errors) {
+      errors.forEach((el) => {
+        el.remove();
+      });
+    }
+
     if (currentModal && unlock) {
       const modalActive = document.querySelector('.js-modal.active');
-
       if (modalActive) {
         modalClose(modalActive, false);
       } else {
@@ -59,10 +72,25 @@ export function showModal(modalName, mode = null, saveHeader = false) {
       // Закрываем модальное окно, если кликнули не по его контенту
       currentModal.classList.add('open');
       currentModal.addEventListener('click', (e) => {
-        if (!e.target.closest('.modal__content') && mode === 'desktop') {
+        if (!e.target.closest('.modal__content') && currentModal.classList.contains('modal')) {
+          console.log(e.target);
           modalClose(e.target.closest('.js-modal'));
         }
       });
+    }
+  }
+
+  // Функция для открытия нужного модального окна
+  function openCurrentyModal() {
+    if (isMobileScreen) {
+      console.log('mobile');
+      if (modalMobile) {
+        modalOpen(modalMobile, true);
+      }
+    } else if (!isMobileScreen) {
+      if (modal) {
+        modalOpen(modal);
+      }
     }
   }
 
@@ -71,16 +99,39 @@ export function showModal(modalName, mode = null, saveHeader = false) {
     if (unlock) {
       modalActive.classList.remove('open');
 
-      // удаляем класс с position: fixed при закрытии модального окна
-      removeClass(header, 'header-fixed');
-
-      if (doUnlock) {
-        bodyUnLock();
+      if (document.querySelector('.open')) {
+        document.querySelector('.open').classList.remove('open');
       }
+
+      // удаляем класс с position: fixed при закрытии модального окна и
+      // разблокируем body
+      removeClass(header, 'header-fixed');
+      bodyUnLock();
     }
   }
 
-  // Блокируем body
+  // Обработчик кнопки, которая открывает модальное окно
+  if (modalLinks.length > 0) {
+    modalLinks.forEach((modalLink) => {
+      modalLink.addEventListener('click', (e) => {
+        openCurrentyModal();
+        e.preventDefault();
+      });
+    });
+  }
+
+  // Функция для обновления состояния экрана
+  function updateScreenState() {
+    isMobileScreen = window.innerWidth < 1024;
+  }
+
+  // Слушатель изменения размера экрана
+  window.addEventListener('resize', () => {
+    updateScreenState();
+  });
+
+  // Функция для блокировки body для того, чтобы не было скачка при
+  // открытии модального окна без скорлла на странице
   function bodyLock() {
     const lockPaddingValue = window.innerWidth - wrapper.offsetWidth + 'px';
 
@@ -99,7 +150,7 @@ export function showModal(modalName, mode = null, saveHeader = false) {
     }, timeout);
   }
 
-  // Разблокируем body
+  // Фкнкция, которая убирает класс lock у body (разблокировывает его)
   function bodyUnLock() {
     setTimeout(() => {
       if (lockPadding.length > 0) {
@@ -118,37 +169,18 @@ export function showModal(modalName, mode = null, saveHeader = false) {
     }, timeout);
   }
 
-  // Обработчик кнопки, которая открывает модальное окно
-  if (modalLinks.length > 0) {
-    modalLinks.forEach((modalLink) => {
-      modalLink.addEventListener('click', (e) => {
-        const currentModal = document.getElementById(modalName);
-        const errors = document.querySelectorAll('.just-validate-error-label');
-
-        // Удаляем ошибки при открытии модального окна
-        if (errors) {
-          errors.forEach((el) => {
-            el.remove();
-          });
-        }
-
-        modalOpen(currentModal);
-        e.preventDefault();
-      });
-    });
-  }
-
   // Обработчик кнопки, которая закрывает модальное окно
   if (modalCloseBtns.length > 0) {
     modalCloseBtns.forEach((modalCloseBtn) => {
       modalCloseBtn.addEventListener('click', (e) => {
         modalClose(modalCloseBtn.closest('.modal'));
+        bodyUnLock();
         e.preventDefault();
       });
     });
   }
 
-  // Закрываем модальное окно при нажатии на esc
+  // Закрытие модального окна при нажатии на esc
   document.addEventListener('keydown', (e) => {
     if (e.which === 27) {
       const modalActive = document.querySelector('.js-modal.open');
@@ -168,19 +200,27 @@ export function showModal(modalName, mode = null, saveHeader = false) {
   );
 
   // Закрываем форму, возвращаем позиционирование хедеру и очищаем поля
-  function eventTriggering(modal, header, form) {
+  function eventTriggering(modal, header) {
     removeClass(modal, 'open');
     removeClass(header, 'header-fixed');
-    form.reset();
+
+    if (modal.classList.contains('modal-mobile')) {
+      modalMobileForm.reset();
+    } else {
+      modalForm.reset();
+    }
+    bodyUnLock();
   }
 
   // Обработчики кнопок на формах в модальных окнах
   modalBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
-      if (mode === 'desktop' && modalForm.checkValidity()) {
-        eventTriggering(modal, header, modalForm);
-      } else if (mode === 'mobile' && modalMobileForm.checkValidity()) {
-        eventTriggering(modalMobile, header, modalMobileForm);
+      currentModalGlobal = btn.closest('.js-modal');
+
+      console.log(currentModalGlobal.getElementsByTagName('form')[0]);
+
+      if (currentModalGlobal.getElementsByTagName('form')[0].checkValidity()) {
+        eventTriggering(currentModalGlobal, header);
       }
     });
   });

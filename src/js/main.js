@@ -1,6 +1,5 @@
 import './libs/modernizr-custom';
-import device from 'current-device';
-import { loadHeaderSwiper, loadServicesSwiper, loadPortfoilioSwiper } from './libs/swiper';
+import { loadHeaderSwiper, loadServicesSwiper, loadPortfolioSwiper } from './libs/swiper';
 import {
   addSliderCounters,
   focusServicesCard,
@@ -10,12 +9,11 @@ import {
 } from './modules/functions';
 import { openBurger } from './modules/burger';
 import { formValidation } from './modules/form-validation';
-import { showModal } from './modules/modal';
 import { backToTop } from './modules/back-to-top';
 import { initMap } from './modules/initMap';
 
 const headerSliderWrapper = document.querySelector('.header-swiper__wrapper');
-const headerSliderPagination = document.querySelector('.header-swiper__pagination');
+const headerSliderPagination = document.querySelector('.header__pagination');
 const servicesLinkWrappers = document.querySelectorAll('.services-card__link-wrapper');
 const servicesLinks = document.querySelectorAll('.services-card__link');
 const servicesBtns = document.querySelectorAll('.services-card__arrow-block');
@@ -40,7 +38,7 @@ focusServicesCard(servicesLinkWrappers, servicesLinks);
 activeServicesCard(servicesBtns);
 
 // Загрузка слайдера в портфолио
-loadPortfoilioSwiper();
+loadPortfolioSwiper();
 // Открываем скрытый текст
 smoothHeight(
   '.portfolio-swiper__slide',
@@ -60,14 +58,6 @@ enableCheck('request-form', requestCheckLabel);
 
 // Кнопка "вернуться наверх"
 backToTop();
-
-if (device.desktop()) {
-  // Модальное окно на десктопе
-  showModal('js-modal', 'desktop');
-} else {
-  // Модальное окно на мобильных экранах
-  showModal('js-modal-mobile', 'mobile', true);
-}
 
 // Инициализация яндекс карты
 initMap();

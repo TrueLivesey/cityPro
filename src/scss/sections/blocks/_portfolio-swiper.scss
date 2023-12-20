@@ -34,9 +34,9 @@
 
   &__pagination {
     position: absolute;
-    bottom: 0.625rem;
-    left: 7rem;
-    z-index: 1;
+      bottom: 0.8125rem;
+      left: 7rem;
+      z-index: 1;
   }
 
   &__fraction {
@@ -71,7 +71,7 @@
   &__prev,
   &__next {
     position: absolute;
-    bottom: 1.125rem;
+    bottom: 1.3125rem;
     width: 3.75rem;
     height: 3.125rem;
     z-index: 99;
@@ -163,6 +163,7 @@
       bottom: 0.625rem;
       left: 0;
       width: 18.75rem;
+      z-index: -1;
 
       &-item {
         font-size: 1.125rem;

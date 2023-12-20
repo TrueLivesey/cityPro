@@ -84,6 +84,7 @@
 
     &__content {
       flex-direction: column;
+      padding-bottom: 3.5rem;
       border-top-left-radius: var(--border-radius-section);
     }
 
@@ -140,7 +141,7 @@
     }
 
     &__content {
-      padding-top: 1rem;
+      padding-top: 1.125rem;
       padding-bottom: 0;
       border-top-left-radius: 0;
       border-top-right-radius: 0;

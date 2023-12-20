@@ -87,15 +87,15 @@
       }
 
       // X
-      .header.open &:nth-child(1) {
+      .header.menu-open &:nth-child(1) {
         transform: translateY(0) rotate(45deg);
       }
 
-      .header.open &:nth-child(2) {
+      .header.menu-open &:nth-child(2) {
         opacity: 0;
       }
 
-      .header.open &:nth-child(3) {
+      .header.menu-open &:nth-child(3) {
         transform: translateY(0) rotate(-45deg);
       }
     }

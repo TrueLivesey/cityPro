@@ -4,9 +4,27 @@
   margin-bottom: var(--gap-section);
 
   &__container {
-    position: relative;
     min-height: 46.875rem;
-    background: no-repeat top center url('../images/request-bg.svg');
+    border-radius: var(--border-radius-section);
+  }
+  
+  &__wrapper {
+    position: relative;
+    border-radius: var(--border-radius-section);
+    background: linear-gradient(rgba(217, 233, 215, 1), rgba(179, 211, 174, 1));
+    background-origin: content-box;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      right: -1px;
+      width: calc(30.25rem + 18vw);
+      height: 5.875rem;
+      background: no-repeat left top url('../images/request-bg_2.svg');
+      background-size: contain;
+      z-index: 1;
+    }
   }
 
   &__content {
@@ -28,9 +46,10 @@
 @include media('max', 'xl') {
   .request {
     &__container {
+      min-height: auto;      
       position: relative;
       background: linear-gradient(rgba(217, 233, 215, 1), rgba(179, 211, 174, 1));
-      
+
       &::before {
         content: url('');
         position: absolute;
@@ -51,6 +70,14 @@
         width: 3.875rem;
         height: 3.875rem;
         background: no-repeat url('../images/section-graphic.svg');
+      }
+    }
+
+    &__wrapper {
+      background: none;
+
+      &::before {
+        display: none;
       }
     }
 
@@ -94,7 +121,7 @@
     }
 
     &__content {
-      padding: 1.1875rem var(--gap-main) 2.1875rem;
+      padding: 1.1875rem var(--gap-main) 1.9375rem;
     }
 
     &__title-block {
