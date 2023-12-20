@@ -95,16 +95,21 @@
 
     &-card {
       &:nth-child(1) {
-        margin-bottom: 2rem;
+        gap: 1.4375rem;
+        margin-bottom: 1.875rem;
       }
 
       &:nth-child(2) {
-        gap: 1.5rem;
-        margin-bottom: 1.5rem;
+        gap: 1.375rem;
+        margin-bottom: 1.625rem;
+
+        .pluses-card__descr {
+          line-height: 124%;
+        }
       }
 
       &:nth-child(3) {
-        gap: 1.5rem;
+        gap: 1.4375rem;
         margin-bottom: 1.8125rem;
       }
 

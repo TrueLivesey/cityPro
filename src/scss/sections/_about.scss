@@ -165,7 +165,7 @@
     }
     
     &__subtitle {
-      margin-bottom: 0.6875rem;
+      margin-bottom: 0.5625rem;
       font-size: 1.125rem;
     }
 
@@ -183,6 +183,7 @@
 
     &__descr {
       font-size: 0.875rem;
+      line-height: 122%;
 
       &:last-child {
         padding-bottom: 2rem;
