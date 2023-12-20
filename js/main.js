@@ -3396,7 +3396,7 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   loadHeaderSwiper: () => (/* binding */ loadHeaderSwiper),
-/* harmony export */   loadPortfoilioSwiper: () => (/* binding */ loadPortfoilioSwiper),
+/* harmony export */   loadPortfolioSwiper: () => (/* binding */ loadPortfolioSwiper),
 /* harmony export */   loadServicesSwiper: () => (/* binding */ loadServicesSwiper)
 /* harmony export */ });
 /* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.mjs");
@@ -3414,7 +3414,7 @@ function loadHeaderSwiper() {
       delay: 5000
     },
     pagination: {
-      el: '.header-swiper__pagination',
+      el: '.header__pagination',
       clickable: true
     },
     breakpoints: {
@@ -3434,22 +3434,22 @@ function loadServicesSwiper() {
   const slideCount = slides.length;
   fraction.innerHTML = `<span class="fraction services__fraction-item">01</span> <span class="fraction services__fraction-item">0${slideCount}</span>`;
   const swiper = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]('.services-swiper', {
-    modules: [swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Pagination],
+    modules: [swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Pagination, swiper_modules__WEBPACK_IMPORTED_MODULE_1__.FreeMode],
+    pagination: {
+      el: '.services-swiper__pagination',
+      clickable: true
+    },
     breakpoints: {
       320: {
         slidesPerView: 1,
         loop: true,
-        spaceBetween: 30,
-        pagination: {
-          el: '.services-swiper__pagination',
-          clickable: true
-        }
+        spaceBetween: 30
       },
       480: {
-        spaceBetween: 30,
+        spaceBetween: 0,
         slidesPerView: 'auto',
         loop: false,
-        pagination: 'none'
+        FreeMode: true
       }
     },
     on: {
@@ -3459,55 +3459,133 @@ function loadServicesSwiper() {
     }
   });
 }
-function loadPortfoilioSwiper() {
+function loadPortfolioSwiper() {
   const portfolio = document.getElementById('portfolio');
   const fraction = document.getElementById('fraction');
   const slides = portfolio.querySelectorAll('.swiper-slide');
   const slideCount = slides.length;
   fraction.innerHTML = `<span class="portfolio-swiper__fraction-item">01</span> <span class="portfolio-swiper__fraction-item">0${slideCount}</span>`;
-  const swiper = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]('.portfolio-swiper', {
-    modules: [swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Pagination, swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Navigation, swiper_modules__WEBPACK_IMPORTED_MODULE_1__.EffectCreative],
-    slidersPerView: 1,
-    speed: 1000,
-    effect: 'creative',
-    creativeEffect: {
-      prev: {
-        shadow: false,
-        translate: ['-125%', 0, -400]
-      },
-      next: {
-        translate: ['100%', 0, 0]
-      }
-    },
-    loop: true,
-    navigation: {
-      nextEl: '.portfolio-swiper__next',
-      prevEl: '.portfolio-swiper__prev'
-    },
-    pagination: {
-      el: '.portfolio-swiper__pagination'
-    },
-    breakpoints: {
-      320: {
-        speed: 500,
-        pagination: {
-          type: 'bullets',
-          clickable: true
+  let swiper = null;
+  let isSwiperInitialized = false;
+
+  // Выносим свайпер в функцию, чтобы заново его инициализировать при рендере
+  // новой пагинации
+  function initializeSwiper() {
+    swiper = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]('.portfolio-swiper', {
+      modules: [swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Pagination, swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Navigation, swiper_modules__WEBPACK_IMPORTED_MODULE_1__.EffectCreative],
+      slidersPerView: 1,
+      loop: true,
+      speed: 700,
+      effect: 'creative',
+      creativeEffect: {
+        prev: {
+          shadow: false,
+          translate: ['-125%', 0, -400]
+        },
+        next: {
+          translate: ['100%', 0, 0]
         }
       },
-      1025: {
-        pagination: {
-          type: 'custom',
-          renderCustom: function (swiper, current, total) {
-            return `<span class="portfolio-swiper__number">${current}</span><span class="portfolio-swiper__slash">/</span><span class="portfolio-swiper__number">${total}</span>`;
-          },
-          clickable: false
+      navigation: {
+        nextEl: '.portfolio-swiper__next',
+        prevEl: '.portfolio-swiper__prev'
+      },
+      pagination: {
+        el: '.portfolio-swiper__pagination',
+        type: 'custom',
+        renderCustom: function (swiper, current, total) {
+          return `<span class="portfolio-swiper__number">${current}</span><span class="portfolio-swiper__slash">/</span><span class="portfolio-swiper__number">${total}</span>`;
+        },
+        clickable: false
+      },
+      breakpoints: {
+        320: {
+          speed: 500,
+          pagination: {
+            type: 'bullets',
+            clickable: true
+          }
+        },
+        1025: {
+          pagination: {
+            type: 'custom',
+            renderCustom: function (swiper, current, total) {
+              return `<span class="portfolio-swiper__number">${current}</span><span class="portfolio-swiper__slash">/</span><span class="portfolio-swiper__number">${total}</span>`;
+            },
+            clickable: false
+          }
+        }
+      },
+      // Создание фракций
+      on: {
+        slideChange: () => {
+          fraction.innerHTML = `<span class="portfolio-swiper__fraction-item">0${swiper.realIndex + 1}</span> <span class="portfolio-swiper__fraction-item">0${slideCount}</span>`;
         }
       }
-    },
-    on: {
-      slideChange: () => {
-        fraction.innerHTML = `<span class="portfolio-swiper__fraction-item">0${swiper.realIndex + 1}</span> <span class="portfolio-swiper__fraction-item">0${slideCount}</span>`;
+    });
+    isSwiperInitialized = true;
+  }
+
+  // Инициализируем свайпер
+  initializeSwiper();
+
+  // Функция, которая удаляет свайпер и заново его инициализирует
+  function destroyAndReinitializeSwiper() {
+    if (isSwiperInitialized) {
+      swiper.destroy();
+      isSwiperInitialized = false;
+    }
+    initializeSwiper();
+  }
+
+  // Функция, которая создаёт пагинацию и переинициализирует свайпер
+  function createPagination(swiper, type, isClickable) {
+    swiper.params.pagination.type = `${type}`;
+    swiper.params.pagination.clickable = isClickable;
+    swiper.pagination.render();
+    destroyAndReinitializeSwiper();
+  }
+
+  // Функция throttle, которая используется для window.resize
+  function throttle(callee, timeout) {
+    let timer = null;
+    return function perform() {
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+      // Если таймер есть, то функция уже была вызвана,
+      // и значит новый вызов следует пропустить.
+      if (timer) return;
+
+      // Если таймера нет, значит мы можем вызвать функцию:
+      timer = setTimeout(() => {
+        // Аргументы передаём неизменными в функцию-аргумент:
+        callee(...args);
+
+        // По окончании очищаем таймер:
+        clearTimeout(timer);
+        timer = null;
+      }, timeout);
+    };
+  }
+
+  // Обёрнутая в throtle функция createPagination()
+  const throttledCreatePagination = throttle(createPagination, 1000);
+
+  // Обработчик изменения ширины экрана. Меняем тип пагинации, рендерим его,
+  // удаляем нынешний свайпер и заново его инициализируем
+  window.addEventListener('resize', () => {
+    if (swiper !== null) {
+      // Для мобильных устройств
+      if (window.innerWidth < 1024) {
+        if (swiper.params.pagination.type !== 'bullets') {
+          throttledCreatePagination(swiper, 'bullets', true);
+        }
+      } else {
+        // Для десктопа
+        if (swiper.params.pagination.type !== 'custom') {
+          throttledCreatePagination(swiper, 'custom', false);
+        }
       }
     }
   });
@@ -3562,17 +3640,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   openBurger: () => (/* binding */ openBurger)
 /* harmony export */ });
 /* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./functions */ "./src/js/modules/functions.js");
+/* harmony import */ var current_device__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! current-device */ "./node_modules/current-device/es/index.js");
+/* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modal */ "./src/js/modules/modal.js");
+
+
 
 function openBurger() {
   const header = document.querySelector('.header');
   const nav = document.getElementById('nav');
   const burger = document.getElementById('burger');
   const navLinkArray = document.querySelectorAll('.nav__link');
+  let innerWidth = window.innerWidth;
+  function toggleAriaLabe(header, burger) {
+    if (header.classList.contains('menu-open')) {
+      burger.ariaLabel = 'Закрыть меню';
+    } else {
+      burger.ariaLabel = 'Открыть меню';
+    }
+  }
   function closeMenu() {
     // Закрытие меню при клике на ссылку в навигации
     navLinkArray.forEach(navLink => {
       navLink.addEventListener('click', () => {
-        (0,_functions__WEBPACK_IMPORTED_MODULE_0__.removeClass)(header, 'open');
+        (0,_functions__WEBPACK_IMPORTED_MODULE_0__.removeClass)(header, 'menu-open');
+        toggleAriaLabe(header, burger);
       });
     });
 
@@ -3580,32 +3671,39 @@ function openBurger() {
     window.addEventListener('keydown', e => {
       if (e.key === 'Escape') {
         burger.blur();
-        (0,_functions__WEBPACK_IMPORTED_MODULE_0__.removeClass)(header, 'open');
+        (0,_functions__WEBPACK_IMPORTED_MODULE_0__.removeClass)(header, 'menu-open');
+        toggleAriaLabe(header, burger);
       }
     });
 
     // Закрытие меню при клике вне его
     document.addEventListener('click', e => {
       if (!nav.contains(e.target) && !burger.contains(e.target)) {
-        (0,_functions__WEBPACK_IMPORTED_MODULE_0__.removeClass)(header, 'open');
+        (0,_functions__WEBPACK_IMPORTED_MODULE_0__.removeClass)(header, 'menu-open');
+        toggleAriaLabe(header, burger);
       }
     });
   }
 
   // Нажатие на бургер
   burger.addEventListener('click', () => {
-    header.classList.toggle('open');
+    header.classList.toggle('menu-open');
+    toggleAriaLabe(header, burger);
   });
 
   // Медиа-запрос max-width: 1024px
   if (window.matchMedia('(max-width: 1024px)').matches) {
     closeMenu();
   }
-
-  // Изменение ширины экрана
-  window.addEventListener('resize', () => {
-    closeMenu();
-  });
+  if (innerWidth === window.innerWidth) {
+    if (window.innerWidth >= 1024) {
+      // Модальное окно на десктопе
+      (0,_modal__WEBPACK_IMPORTED_MODULE_2__.showModal)('js-modal', 'desktop');
+    } else {
+      // Модальное окно на мобильных экранах
+      (0,_modal__WEBPACK_IMPORTED_MODULE_2__.showModal)('js-modal-mobile', 'mobile', true);
+    }
+  }
 }
 
 /***/ }),
@@ -3681,6 +3779,7 @@ function formValidation(form) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   activeServicesCard: () => (/* binding */ activeServicesCard),
+/* harmony export */   addClass: () => (/* binding */ addClass),
 /* harmony export */   addSliderCounters: () => (/* binding */ addSliderCounters),
 /* harmony export */   checkClass: () => (/* binding */ checkClass),
 /* harmony export */   enableCheck: () => (/* binding */ enableCheck),
@@ -3693,10 +3792,10 @@ __webpack_require__.r(__webpack_exports__);
 
 // Создание DOM элементов
 function createSliderCounters() {
-  const counter = (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('span.header-swiper__counter');
-  const counter2 = (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('span.header-swiper__counter');
-  counter.id = 'header-swiper-counter';
-  counter2.id = 'header-swiper-counter-2';
+  const counter = (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('span.header__counter');
+  const counter2 = (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('span.header__counter');
+  counter.id = 'header-counter';
+  counter2.id = 'header-counter-2';
   return {
     counter,
     counter2
@@ -3719,6 +3818,13 @@ function addSliderCounters(sliderWrapper, pagination) {
     pagination.parentElement.insertBefore(counter2, pagination.nextSibling);
   } else {
     pagination.parentElement.insertBefore(counter, pagination);
+  }
+}
+
+// Добавление класса
+function addClass(e, className) {
+  if (!e.classList.contains(className)) {
+    e.classList.add(className);
   }
 }
 
@@ -3873,14 +3979,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _form_validation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./form-validation */ "./src/js/modules/form-validation.js");
 
 
-function showModal(modalName) {
-  let mode = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-  let saveHeader = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+function showModal() {
   const body = document.querySelector('body');
   const wrapper = document.querySelector('.wrapper');
   const header = document.querySelector('.header__wrapper');
-  const modal = document.getElementById('js-modal');
-  const modalMobile = document.getElementById('js-modal-mobile');
   const modalLinks = document.querySelectorAll('.js-modal-open');
   const lockPadding = document.querySelectorAll('.lock-padding');
   const modalForm = document.getElementById('modal-form');
@@ -3891,11 +3993,12 @@ function showModal(modalName) {
   const modalBtn = document.getElementById('modal-btn');
   const modalMobileBtn = document.getElementById('modal-mobile-btn');
   const modalBtns = [modalBtn, modalMobileBtn];
-
-  // const resetValidation = formValidation();
-
-  const timeout = 300;
+  let modal = null;
+  let modalMobile = null;
+  let currentModalGlobal = null;
   let unlock = true;
+  let isMobileScreen = window.innerWidth < 1024;
+  const timeout = 300;
 
   // Проверка на наличие wrapper
   if (!wrapper) {
@@ -3903,11 +4006,16 @@ function showModal(modalName) {
     return;
   }
 
+  // Получаем ссылки на модальные окна
+  modalMobile = document.getElementById('js-modal-mobile');
+  modal = document.getElementById('js-modal');
+
   // Открытие модального окна
-  function modalOpen(currentModal) {
+  function modalOpen(currentModal, saveHeader) {
     // Добавляем хедеру класс с position: fixed, чтобы шапка была видна
     // вместе с модальным окном
-    if (saveHeader && mode === 'mobile') {
+    console.log(currentModal);
+    if (saveHeader) {
       header.classList.add('header-fixed');
       header.addEventListener('click', e => {
         const modalActive = document.querySelector('.js-modal.open');
@@ -3916,6 +4024,14 @@ function showModal(modalName) {
         }
       }, {
         once: true
+      });
+    }
+    const errors = document.querySelectorAll('.just-validate-error-label');
+
+    // Удаляем ошибки при открытии модального окна
+    if (errors) {
+      errors.forEach(el => {
+        el.remove();
       });
     }
     if (currentModal && unlock) {
@@ -3929,10 +4045,25 @@ function showModal(modalName) {
       // Закрываем модальное окно, если кликнули не по его контенту
       currentModal.classList.add('open');
       currentModal.addEventListener('click', e => {
-        if (!e.target.closest('.modal__content') && mode === 'desktop') {
+        if (!e.target.closest('.modal__content') && currentModal.classList.contains('modal')) {
+          console.log(e.target);
           modalClose(e.target.closest('.js-modal'));
         }
       });
+    }
+  }
+
+  // Функция для открытия нужного модального окна
+  function openCurrentyModal() {
+    if (isMobileScreen) {
+      console.log('mobile');
+      if (modalMobile) {
+        modalOpen(modalMobile, true);
+      }
+    } else if (!isMobileScreen) {
+      if (modal) {
+        modalOpen(modal);
+      }
     }
   }
 
@@ -3941,16 +4072,39 @@ function showModal(modalName) {
     let doUnlock = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
     if (unlock) {
       modalActive.classList.remove('open');
-
-      // удаляем класс с position: fixed при закрытии модального окна
-      (0,_functions__WEBPACK_IMPORTED_MODULE_0__.removeClass)(header, 'header-fixed');
-      if (doUnlock) {
-        bodyUnLock();
+      if (document.querySelector('.open')) {
+        document.querySelector('.open').classList.remove('open');
       }
+
+      // удаляем класс с position: fixed при закрытии модального окна и
+      // разблокируем body
+      (0,_functions__WEBPACK_IMPORTED_MODULE_0__.removeClass)(header, 'header-fixed');
+      bodyUnLock();
     }
   }
 
-  // Блокируем body
+  // Обработчик кнопки, которая открывает модальное окно
+  if (modalLinks.length > 0) {
+    modalLinks.forEach(modalLink => {
+      modalLink.addEventListener('click', e => {
+        openCurrentyModal();
+        e.preventDefault();
+      });
+    });
+  }
+
+  // Функция для обновления состояния экрана
+  function updateScreenState() {
+    isMobileScreen = window.innerWidth < 1024;
+  }
+
+  // Слушатель изменения размера экрана
+  window.addEventListener('resize', () => {
+    updateScreenState();
+  });
+
+  // Функция для блокировки body для того, чтобы не было скачка при
+  // открытии модального окна без скорлла на странице
   function bodyLock() {
     const lockPaddingValue = window.innerWidth - wrapper.offsetWidth + 'px';
     if (lockPadding.length > 0) {
@@ -3966,7 +4120,7 @@ function showModal(modalName) {
     }, timeout);
   }
 
-  // Разблокируем body
+  // Фкнкция, которая убирает класс lock у body (разблокировывает его)
   function bodyUnLock() {
     setTimeout(() => {
       if (lockPadding.length > 0) {
@@ -3983,36 +4137,18 @@ function showModal(modalName) {
     }, timeout);
   }
 
-  // Обработчик кнопки, которая открывает модальное окно
-  if (modalLinks.length > 0) {
-    modalLinks.forEach(modalLink => {
-      modalLink.addEventListener('click', e => {
-        const currentModal = document.getElementById(modalName);
-        const errors = document.querySelectorAll('.just-validate-error-label');
-
-        // Удаляем ошибки при открытии модального окна
-        if (errors) {
-          errors.forEach(el => {
-            el.remove();
-          });
-        }
-        modalOpen(currentModal);
-        e.preventDefault();
-      });
-    });
-  }
-
   // Обработчик кнопки, которая закрывает модальное окно
   if (modalCloseBtns.length > 0) {
     modalCloseBtns.forEach(modalCloseBtn => {
       modalCloseBtn.addEventListener('click', e => {
         modalClose(modalCloseBtn.closest('.modal'));
+        bodyUnLock();
         e.preventDefault();
       });
     });
   }
 
-  // Закрываем модальное окно при нажатии на esc
+  // Закрытие модального окна при нажатии на esc
   document.addEventListener('keydown', e => {
     if (e.which === 27) {
       const modalActive = document.querySelector('.js-modal.open');
@@ -4027,19 +4163,24 @@ function showModal(modalName) {
   (0,_form_validation__WEBPACK_IMPORTED_MODULE_1__.formValidation)('modal-mobile-form', 'modal-mobile-form-name', modalMobilelPhone, 'modal-mobile-form-check');
 
   // Закрываем форму, возвращаем позиционирование хедеру и очищаем поля
-  function eventTriggering(modal, header, form) {
+  function eventTriggering(modal, header) {
     (0,_functions__WEBPACK_IMPORTED_MODULE_0__.removeClass)(modal, 'open');
     (0,_functions__WEBPACK_IMPORTED_MODULE_0__.removeClass)(header, 'header-fixed');
-    form.reset();
+    if (modal.classList.contains('modal-mobile')) {
+      modalMobileForm.reset();
+    } else {
+      modalForm.reset();
+    }
+    bodyUnLock();
   }
 
   // Обработчики кнопок на формах в модальных окнах
   modalBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      if (mode === 'desktop' && modalForm.checkValidity()) {
-        eventTriggering(modal, header, modalForm);
-      } else if (mode === 'mobile' && modalMobileForm.checkValidity()) {
-        eventTriggering(modalMobile, header, modalMobileForm);
+      currentModalGlobal = btn.closest('.js-modal');
+      console.log(currentModalGlobal.getElementsByTagName('form')[0]);
+      if (currentModalGlobal.getElementsByTagName('form')[0].checkValidity()) {
+        eventTriggering(currentModalGlobal, header);
       }
     });
   });
@@ -17610,16 +17751,12 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _libs_modernizr_custom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./libs/modernizr-custom */ "./src/js/libs/modernizr-custom.js");
 /* harmony import */ var _libs_modernizr_custom__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_libs_modernizr_custom__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var current_device__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! current-device */ "./node_modules/current-device/es/index.js");
-/* harmony import */ var _libs_swiper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./libs/swiper */ "./src/js/libs/swiper.js");
-/* harmony import */ var _modules_functions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/functions */ "./src/js/modules/functions.js");
-/* harmony import */ var _modules_burger__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/burger */ "./src/js/modules/burger.js");
-/* harmony import */ var _modules_form_validation__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/form-validation */ "./src/js/modules/form-validation.js");
-/* harmony import */ var _modules_modal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/modal */ "./src/js/modules/modal.js");
-/* harmony import */ var _modules_back_to_top__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/back-to-top */ "./src/js/modules/back-to-top.js");
-/* harmony import */ var _modules_initMap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/initMap */ "./src/js/modules/initMap.js");
-
-
+/* harmony import */ var _libs_swiper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./libs/swiper */ "./src/js/libs/swiper.js");
+/* harmony import */ var _modules_functions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/functions */ "./src/js/modules/functions.js");
+/* harmony import */ var _modules_burger__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/burger */ "./src/js/modules/burger.js");
+/* harmony import */ var _modules_form_validation__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/form-validation */ "./src/js/modules/form-validation.js");
+/* harmony import */ var _modules_back_to_top__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/back-to-top */ "./src/js/modules/back-to-top.js");
+/* harmony import */ var _modules_initMap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/initMap */ "./src/js/modules/initMap.js");
 
 
 
@@ -17628,7 +17765,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const headerSliderWrapper = document.querySelector('.header-swiper__wrapper');
-const headerSliderPagination = document.querySelector('.header-swiper__pagination');
+const headerSliderPagination = document.querySelector('.header__pagination');
 const servicesLinkWrappers = document.querySelectorAll('.services-card__link-wrapper');
 const servicesLinks = document.querySelectorAll('.services-card__link');
 const servicesBtns = document.querySelectorAll('.services-card__arrow-block');
@@ -17638,45 +17775,38 @@ const portfolioBtnWrapper = document.querySelector('.portfolio__swiper-wrapper')
 const aboutBtnWrapper = document.querySelector('.about__wrapper');
 
 // Загрузка слайдера в хедере
-(0,_libs_swiper__WEBPACK_IMPORTED_MODULE_2__.loadHeaderSwiper)();
+(0,_libs_swiper__WEBPACK_IMPORTED_MODULE_1__.loadHeaderSwiper)();
 // Создание динамического счётчика (количество слайдов на странице)
-(0,_modules_functions__WEBPACK_IMPORTED_MODULE_3__.addSliderCounters)(headerSliderWrapper, headerSliderPagination);
+(0,_modules_functions__WEBPACK_IMPORTED_MODULE_2__.addSliderCounters)(headerSliderWrapper, headerSliderPagination);
 
 // Открытые бургер меню
-(0,_modules_burger__WEBPACK_IMPORTED_MODULE_4__.openBurger)();
+(0,_modules_burger__WEBPACK_IMPORTED_MODULE_3__.openBurger)();
 
 // Загрузка слайдера в услугах
-(0,_libs_swiper__WEBPACK_IMPORTED_MODULE_2__.loadServicesSwiper)();
+(0,_libs_swiper__WEBPACK_IMPORTED_MODULE_1__.loadServicesSwiper)();
 // Добавление фокуса на карточки в услугах
-(0,_modules_functions__WEBPACK_IMPORTED_MODULE_3__.focusServicesCard)(servicesLinkWrappers, servicesLinks);
+(0,_modules_functions__WEBPACK_IMPORTED_MODULE_2__.focusServicesCard)(servicesLinkWrappers, servicesLinks);
 // Клик по стрелочке в услугах на мобильных приложениях
-(0,_modules_functions__WEBPACK_IMPORTED_MODULE_3__.activeServicesCard)(servicesBtns);
+(0,_modules_functions__WEBPACK_IMPORTED_MODULE_2__.activeServicesCard)(servicesBtns);
 
 // Загрузка слайдера в портфолио
-(0,_libs_swiper__WEBPACK_IMPORTED_MODULE_2__.loadPortfoilioSwiper)();
+(0,_libs_swiper__WEBPACK_IMPORTED_MODULE_1__.loadPortfolioSwiper)();
 // Открываем скрытый текст
-(0,_modules_functions__WEBPACK_IMPORTED_MODULE_3__.smoothHeight)('.portfolio-swiper__slide', '.cut', portfolioBtnWrapper, '.portfolio-swiper__text-block', '.portfolio-swiper__text');
+(0,_modules_functions__WEBPACK_IMPORTED_MODULE_2__.smoothHeight)('.portfolio-swiper__slide', '.cut', portfolioBtnWrapper, '.portfolio-swiper__text-block', '.portfolio-swiper__text');
 
 // Открываем скрытый текст в about
-(0,_modules_functions__WEBPACK_IMPORTED_MODULE_3__.smoothHeight)('.about', '.cut', aboutBtnWrapper, '.about__text-block', '.about__text');
+(0,_modules_functions__WEBPACK_IMPORTED_MODULE_2__.smoothHeight)('.about', '.cut', aboutBtnWrapper, '.about__text-block', '.about__text');
 
 // Валидация формы в секции "оставьте заявку"
-(0,_modules_form_validation__WEBPACK_IMPORTED_MODULE_5__.formValidation)('request-form', 'request-form-name', requestPhone, 'request-form-check');
+(0,_modules_form_validation__WEBPACK_IMPORTED_MODULE_4__.formValidation)('request-form', 'request-form-name', requestPhone, 'request-form-check');
 // Нажатие enter на чекбокс
-(0,_modules_functions__WEBPACK_IMPORTED_MODULE_3__.enableCheck)('request-form', requestCheckLabel);
+(0,_modules_functions__WEBPACK_IMPORTED_MODULE_2__.enableCheck)('request-form', requestCheckLabel);
 
 // Кнопка "вернуться наверх"
-(0,_modules_back_to_top__WEBPACK_IMPORTED_MODULE_7__.backToTop)();
-if (current_device__WEBPACK_IMPORTED_MODULE_1__["default"].desktop()) {
-  // Модальное окно на десктопе
-  (0,_modules_modal__WEBPACK_IMPORTED_MODULE_6__.showModal)('js-modal', 'desktop');
-} else {
-  // Модальное окно на мобильных экранах
-  (0,_modules_modal__WEBPACK_IMPORTED_MODULE_6__.showModal)('js-modal-mobile', 'mobile', true);
-}
+(0,_modules_back_to_top__WEBPACK_IMPORTED_MODULE_5__.backToTop)();
 
 // Инициализация яндекс карты
-(0,_modules_initMap__WEBPACK_IMPORTED_MODULE_8__.initMap)();
+(0,_modules_initMap__WEBPACK_IMPORTED_MODULE_6__.initMap)();
 })();
 
 /******/ })()
