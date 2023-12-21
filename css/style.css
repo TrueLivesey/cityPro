@@ -2748,7 +2748,7 @@ body.lock {
 }
 .portfolio-swiper__text-wrapper {
   position: relative;
-  max-height: 16.875rem;
+  max-height: 16.75rem;
   overflow-y: auto;
   /* WebKit */
   /* Firefox */
