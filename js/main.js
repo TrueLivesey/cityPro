@@ -3499,7 +3499,7 @@ function loadPortfolioSwiper() {
         clickable: false
       },
       breakpoints: {
-        320: {
+        0: {
           speed: 500,
           pagination: {
             type: 'bullets',
@@ -3570,7 +3570,7 @@ function loadPortfolioSwiper() {
   }
 
   // Обёрнутая в throtle функция createPagination()
-  const throttledCreatePagination = throttle(createPagination, 1000);
+  const throttledCreatePagination = throttle(createPagination, 800);
 
   // Обработчик изменения ширины экрана. Меняем тип пагинации, рендерим его,
   // удаляем нынешний свайпер и заново его инициализируем
@@ -4014,7 +4014,6 @@ function showModal() {
   function modalOpen(currentModal, saveHeader) {
     // Добавляем хедеру класс с position: fixed, чтобы шапка была видна
     // вместе с модальным окном
-    console.log(currentModal);
     if (saveHeader) {
       header.classList.add('header-fixed');
       header.addEventListener('click', e => {
@@ -4046,7 +4045,6 @@ function showModal() {
       currentModal.classList.add('open');
       currentModal.addEventListener('click', e => {
         if (!e.target.closest('.modal__content') && currentModal.classList.contains('modal')) {
-          console.log(e.target);
           modalClose(e.target.closest('.js-modal'));
         }
       });
@@ -4056,7 +4054,6 @@ function showModal() {
   // Функция для открытия нужного модального окна
   function openCurrentyModal() {
     if (isMobileScreen) {
-      console.log('mobile');
       if (modalMobile) {
         modalOpen(modalMobile, true);
       }
@@ -4069,7 +4066,6 @@ function showModal() {
 
   // Закрытие модального окна
   function modalClose(modalActive) {
-    let doUnlock = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
     if (unlock) {
       modalActive.classList.remove('open');
       if (document.querySelector('.open')) {
@@ -4178,7 +4174,6 @@ function showModal() {
   modalBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       currentModalGlobal = btn.closest('.js-modal');
-      console.log(currentModalGlobal.getElementsByTagName('form')[0]);
       if (currentModalGlobal.getElementsByTagName('form')[0].checkValidity()) {
         eventTriggering(currentModalGlobal, header);
       }
