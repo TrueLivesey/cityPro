@@ -229,6 +229,9 @@ body.lock {
 }
 
 .main-title.hidden {
+  position: absolute;
+  top: -100rem;
+  overflow: hidden;
   visibility: hidden;
   opacity: 0;
 }
@@ -2947,7 +2950,7 @@ body.lock {
   }
   .portfolio .portfolio-swiper__pagination {
     position: absolute;
-    top: 18.6875rem;
+    top: 18.625rem;
     left: 50%;
     bottom: auto;
     padding: 0;
@@ -2956,7 +2959,7 @@ body.lock {
     transform: translateX(-50%);
   }
   .portfolio .portfolio-swiper__fraction {
-    top: 18.0625rem;
+    top: 18rem;
     left: 50%;
     bottom: auto;
     max-width: 17.5rem;
@@ -3752,7 +3755,7 @@ body.lock {
   }
   .footer__top {
     gap: 0.5625rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.4375rem;
   }
   .footer__logo {
     max-width: 12.5rem;
@@ -3773,7 +3776,7 @@ body.lock {
     visibility: hidden;
   }
   .footer__bottom {
-    gap: 1.3125rem;
+    gap: 1.375rem;
   }
   .footer__descr-dev {
     font-size: 1rem;
