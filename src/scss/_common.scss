@@ -58,6 +58,9 @@ body.lock {
 
 .main-title {
   &.hidden {
+    position: absolute;
+    top: -100rem;
+    overflow: hidden;
     visibility: hidden;
     opacity: 0;
   }
