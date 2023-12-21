@@ -115,7 +115,7 @@ function loadPortfolioSwiper() {
       },
 
       breakpoints: {
-        320: {
+        0: {
           speed: 500,
           pagination: {
             type: 'bullets',

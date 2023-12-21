@@ -79,6 +79,12 @@
         fill: var(--color-rzhd);
       }
     }
+
+    &:nth-child(3) {
+      .trust__icon {
+        margin-top: -1px;
+      }
+    }
   }
 
   &__icon {
@@ -239,7 +245,7 @@
       &:nth-child(3) {
         .trust__icon {
           max-width: 10.875rem;
-          margin-top: -1px;
+          margin-top: -2px;
         }
       }
     }

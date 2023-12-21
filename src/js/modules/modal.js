@@ -37,7 +37,6 @@ export function showModal() {
   function modalOpen(currentModal, saveHeader) {
     // Добавляем хедеру класс с position: fixed, чтобы шапка была видна
     // вместе с модальным окном
-    console.log(currentModal);
     if (saveHeader) {
       header.classList.add('header-fixed');
       header.addEventListener(
@@ -73,7 +72,6 @@ export function showModal() {
       currentModal.classList.add('open');
       currentModal.addEventListener('click', (e) => {
         if (!e.target.closest('.modal__content') && currentModal.classList.contains('modal')) {
-          console.log(e.target);
           modalClose(e.target.closest('.js-modal'));
         }
       });
@@ -83,7 +81,6 @@ export function showModal() {
   // Функция для открытия нужного модального окна
   function openCurrentyModal() {
     if (isMobileScreen) {
-      console.log('mobile');
       if (modalMobile) {
         modalOpen(modalMobile, true);
       }
@@ -95,7 +92,7 @@ export function showModal() {
   }
 
   // Закрытие модального окна
-  function modalClose(modalActive, doUnlock = true) {
+  function modalClose(modalActive) {
     if (unlock) {
       modalActive.classList.remove('open');
 
@@ -216,8 +213,6 @@ export function showModal() {
   modalBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
       currentModalGlobal = btn.closest('.js-modal');
-
-      console.log(currentModalGlobal.getElementsByTagName('form')[0]);
 
       if (currentModalGlobal.getElementsByTagName('form')[0].checkValidity()) {
         eventTriggering(currentModalGlobal, header);

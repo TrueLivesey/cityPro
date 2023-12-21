@@ -28,12 +28,13 @@
     &-contacts {
       display: none;
 
-      &__item {
-      }
-
       &__link {
         display: block;
         max-height: 3.125rem;
+      }
+      
+      &__icon {
+        transition: fill var(--transition-link);
       }
     }
   }
@@ -72,6 +73,31 @@
       }
     }
   }
+
+  .nav-contacts {
+    &__link {
+      &:focus-visible {
+        outline-offset: var(--outline-offset);
+        outline: var(--outline-blue-2);
+  
+        .nav-contacts__icon {
+          fill: var(--color-blue-darker-2);
+        }
+      }
+  
+      &:hover {
+        .nav-contacts__icon {
+          fill: var(--color-blue);
+        }
+      }
+  
+      &:active {
+        .nav-contacts__icon {
+          fill: var(--color-blue-darker-2);
+        }
+      }
+    }
+  }
 }
 
 @media(hover: none) {
@@ -99,6 +125,25 @@
           .nav-contacts__icon {
             fill: var(--color-blue-darker-2);
           }
+        }
+      }
+    }
+  }
+
+  .nav-contacts {
+    &__link {
+      &:focus-visible {
+        outline-offset: var(--outline-offset);
+        outline: var(--outline-blue-2);
+  
+        .nav-contacts__icon {
+          fill: var(--color-blue-darker-2);
+        }
+      }
+  
+      &:active {
+        .nav-contacts__icon {
+          fill: var(--color-blue-darker-2);
         }
       }
     }

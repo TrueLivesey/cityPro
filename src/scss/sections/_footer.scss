@@ -7,7 +7,7 @@
 
   &__top {
     display: flex;
-    margin-bottom: 2.5625rem;
+    margin-bottom: 2.75rem;
   }
 
   &__wrapper {
@@ -26,7 +26,7 @@
   }
 
   &__nav-wrapper {
-    margin-right: 3.875rem;
+    margin-right: 3.9375rem;
   }
 
   &__contacts-and-socials {
@@ -34,7 +34,7 @@
   }
 
   &__address {
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.3125rem;
   }
 
   &__bottom {
@@ -48,10 +48,11 @@
     font-size: 1rem;
     font-style: normal;
     font-weight: 600;
-    line-height: normal;
+    line-height: 100%;
   }
 
   &__descr-dev {
+    line-height: 100%;
     transition: color var(--transition-link);
   }
 
@@ -221,7 +222,7 @@
 
     &__top {
       gap: 0.5625rem;
-      margin-bottom: 1.3125rem;
+      margin-bottom: 1.5rem;
     }
 
     &__logo {
@@ -229,7 +230,7 @@
     }
 
     &__descr {
-      line-height: 122%;
+      line-height: 121%;
     }
 
     &__address {

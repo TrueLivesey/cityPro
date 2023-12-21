@@ -10,6 +10,12 @@
     transition: color var(--transition-link);
   }
 
+  &__schedule {
+    display: flex;
+    gap: 0.625rem;
+    min-width: 12.5rem;
+  }
+
   &__icon-wrapper {
     position: relative;
     display: flex;
@@ -140,7 +146,8 @@
     .address {
       align-items: center;
 
-      &__link {
+      &__link,
+      &__schedule {
         flex-direction: column;
         align-items: center;
       }
@@ -172,7 +179,8 @@
       gap: 1.625rem;
       margin-bottom: 1.625rem;
 
-      &__link {
+      &__link,
+      &__schedule {
         gap: 0.9375rem;
       }
     }

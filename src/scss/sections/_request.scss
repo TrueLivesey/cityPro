@@ -98,6 +98,8 @@
 // 480px
 @include media('max', 'sm') {
   .request {
+    margin-bottom: calc(var(--gap-section) - 1px);
+
     &__container {
       border-radius: 2.1875rem;
 

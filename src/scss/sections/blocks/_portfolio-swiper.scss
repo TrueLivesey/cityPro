@@ -4,8 +4,8 @@
   }
 
   &__text-block {
-    max-width: 24.8125rem;
-    margin-right: 2.0625rem;
+    max-width: 25.9375rem;
+    margin-right: 0.9375rem;
   }
 
   &__title {
@@ -15,6 +15,41 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+  }
+
+  &__text-wrapper {
+    position: relative;
+    max-height: 15.4375rem;
+    overflow-y: auto;
+
+    /* WebKit */
+    &::-webkit-scrollbar {
+      width: .6rem;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: var(--color-gray-lighter-2);
+      border-radius: 0.3125rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--color-green-lighter);
+      border-radius: 0.3125rem;
+      
+      &:hover {
+        background-color:var(--color-green);
+      }
+    }
+
+    /* Firefox */
+    scrollbar-gutter: stable;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-green-lighter-2) var(--color-gray-lighter-2);
+    scroll-behavior: smooth;
+  }
+
+  &__text {
+    padding-right: 0.625rem;
   }
 
   &__descr {
@@ -188,6 +223,10 @@
         min-height: 16.875rem;
       }
 
+      &__text-wrapper {
+        overflow: visible;
+      }
+
       &__text-block {
         order: 3;
         max-height: 10rem;
@@ -204,6 +243,7 @@
       }
 
       &__text {
+        padding: 0;
         background-image: linear-gradient(to bottom, rgba(39, 39, 39, 1), rgba(39, 39, 39, 0) 50%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;

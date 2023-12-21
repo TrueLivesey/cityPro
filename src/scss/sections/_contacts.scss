@@ -2,7 +2,7 @@
   &__container {
     display: flex;
     justify-content: space-between;
-    gap: 40px;
+    gap: 2.5rem;
     width: 100%;
   }
 
@@ -11,7 +11,7 @@
   }
 
   &__title-block {
-    margin-bottom: 24px;
+    margin-bottom: 1.5rem;
   }
   
   &__title {
@@ -19,11 +19,11 @@
   }
 
   &__address {
-    margin-bottom: 21px;
+    margin-bottom: 1.3125rem;
   }
 
   &__socials {
-    margin-bottom: 25px;
+    margin-bottom: 1.8125rem;
   }
 
   &__map-wrapper {
@@ -73,7 +73,7 @@
     }
 
     &__title-block {
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.375rem;
     }
 
     &__socials {
