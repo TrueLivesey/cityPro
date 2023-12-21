@@ -6,6 +6,7 @@
   &__text-block {
     max-width: 25.9375rem;
     margin-right: 0.9375rem;
+    z-index: 1;
   }
 
   &__title {
@@ -19,7 +20,7 @@
 
   &__text-wrapper {
     position: relative;
-    max-height: 15.4375rem;
+    max-height: 16.875rem;
     overflow-y: auto;
 
     /* WebKit */
@@ -224,6 +225,7 @@
       }
 
       &__text-wrapper {
+        max-height: none;
         overflow: visible;
       }
 
