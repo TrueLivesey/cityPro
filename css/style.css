@@ -2736,6 +2736,7 @@ body.lock {
 .portfolio-swiper__text-block {
   max-width: 25.9375rem;
   margin-right: 0.9375rem;
+  z-index: 1;
 }
 .portfolio-swiper__title {
   margin-bottom: 0.6875rem;
@@ -2747,7 +2748,7 @@ body.lock {
 }
 .portfolio-swiper__text-wrapper {
   position: relative;
-  max-height: 15.4375rem;
+  max-height: 16.875rem;
   overflow-y: auto;
   /* WebKit */
   /* Firefox */
@@ -2920,6 +2921,7 @@ body.lock {
     min-height: 16.875rem;
   }
   .portfolio .portfolio-swiper__text-wrapper {
+    max-height: none;
     overflow: visible;
   }
   .portfolio .portfolio-swiper__text-block {
