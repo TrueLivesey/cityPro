@@ -3395,7 +3395,7 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   loadHeaderSwiper: () => (/* binding */ loadHeaderSwiper),
+/* harmony export */   loadHeroSlider: () => (/* binding */ loadHeroSlider),
 /* harmony export */   loadPortfolioSwiper: () => (/* binding */ loadPortfolioSwiper),
 /* harmony export */   loadServicesSwiper: () => (/* binding */ loadServicesSwiper)
 /* harmony export */ });
@@ -3405,8 +3405,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function loadHeaderSwiper() {
-  const swiper = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]('.header-swiper', {
+function loadHeroSlider() {
+  const swiper = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]('.hero-swiper', {
     modules: [swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Pagination, swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Autoplay],
     loop: true,
     autoplay: {
@@ -3414,11 +3414,11 @@ function loadHeaderSwiper() {
       delay: 5000
     },
     pagination: {
-      el: '.header__pagination',
+      el: '.hero__pagination',
       clickable: true
     },
     breakpoints: {
-      320: {
+      0: {
         speed: 500
       },
       769: {
@@ -3440,12 +3440,12 @@ function loadServicesSwiper() {
       clickable: true
     },
     breakpoints: {
-      320: {
+      0: {
         slidesPerView: 1,
         loop: true,
         spaceBetween: 30
       },
-      480: {
+      481: {
         spaceBetween: 0,
         slidesPerView: 'auto',
         loop: false,
@@ -3487,8 +3487,8 @@ function loadPortfolioSwiper() {
         }
       },
       navigation: {
-        nextEl: '.portfolio-swiper__next',
-        prevEl: '.portfolio-swiper__prev'
+        nextEl: '.portfolio-swiper-next',
+        prevEl: '.portfolio-swiper-prev'
       },
       pagination: {
         el: '.portfolio-swiper__pagination',
@@ -3792,10 +3792,10 @@ __webpack_require__.r(__webpack_exports__);
 
 // Создание DOM элементов
 function createSliderCounters() {
-  const counter = (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('span.header__counter');
-  const counter2 = (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('span.header__counter');
-  counter.id = 'header-counter';
-  counter2.id = 'header-counter-2';
+  const counter = (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('span.hero__counter');
+  const counter2 = (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('span.hero__counter');
+  counter.id = 'hero-counter';
+  counter2.id = 'hero-counter-2';
   return {
     counter,
     counter2
@@ -17759,8 +17759,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const headerSliderWrapper = document.querySelector('.header-swiper__wrapper');
-const headerSliderPagination = document.querySelector('.header__pagination');
+const heroSwiperWrapper = document.querySelector('.hero-swiper__wrapper');
+const heroSwiperPagination = document.querySelector('.hero__pagination');
 const servicesLinkWrappers = document.querySelectorAll('.services-card__link-wrapper');
 const servicesLinks = document.querySelectorAll('.services-card__link');
 const servicesBtns = document.querySelectorAll('.services-card__arrow-block');
@@ -17769,10 +17769,10 @@ const requestCheckLabel = document.querySelector('.request-form__label-check');
 const portfolioBtnWrapper = document.querySelector('.portfolio__swiper-wrapper');
 const aboutBtnWrapper = document.querySelector('.about__wrapper');
 
-// Загрузка слайдера в хедере
-(0,_libs_swiper__WEBPACK_IMPORTED_MODULE_1__.loadHeaderSwiper)();
+// Загрузка слайдера в hero
+(0,_libs_swiper__WEBPACK_IMPORTED_MODULE_1__.loadHeroSlider)();
 // Создание динамического счётчика (количество слайдов на странице)
-(0,_modules_functions__WEBPACK_IMPORTED_MODULE_2__.addSliderCounters)(headerSliderWrapper, headerSliderPagination);
+(0,_modules_functions__WEBPACK_IMPORTED_MODULE_2__.addSliderCounters)(heroSwiperWrapper, heroSwiperPagination);
 
 // Открытые бургер меню
 (0,_modules_burger__WEBPACK_IMPORTED_MODULE_3__.openBurger)();
