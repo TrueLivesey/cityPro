@@ -40,6 +40,7 @@ body.lock {
 }
 
 .wrapper {
+  position: relative;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -371,6 +372,10 @@ body.lock {
 
 // 480px
 @include media('max', 'sm') {
+  .wrapper {
+    overflow: hidden;
+  }
+
   .section-title.section-title {
     line-height: 85%;
   }

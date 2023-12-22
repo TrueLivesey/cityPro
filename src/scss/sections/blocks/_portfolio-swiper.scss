@@ -104,8 +104,8 @@
     letter-spacing: 0.03125rem;
   }
 
-  &__prev,
-  &__next {
+  &-prev,
+  &-next {
     position: absolute;
     bottom: -6rem;
     width: 3.75rem;
@@ -115,12 +115,12 @@
     transition: opacity var(--transition-link);
   }
 
-  &__prev {
+  &-prev {
     left: 4.0625rem;
     background: no-repeat center url('../images/navigation-arrow.svg');
   }
 
-  &__next {
+  &-next {
     left: 21.5625rem;
     background: no-repeat center url('../images/navigation-arrow.svg');
     transform: scale(-1, 1);
@@ -131,13 +131,13 @@
 // ----- Медиа-запросы -----
 @media (hover: hover) {
   .portfolio-swiper {
-    &__prev {
+    &-prev {
       &:hover {
         opacity: .6;
       }
     }
 
-    &__next {
+    &-next {
       &:hover {
         opacity: .6;
       }
@@ -165,8 +165,8 @@
       max-height: 21.875rem;
     }
 
-    &__prev,
-    &__next {
+    &-prev,
+    &-next {
       display: none;
     }
 

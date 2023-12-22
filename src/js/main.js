@@ -1,5 +1,5 @@
 import './libs/modernizr-custom';
-import { loadHeaderSwiper, loadServicesSwiper, loadPortfolioSwiper } from './libs/swiper';
+import { loadHeroSlider, loadServicesSwiper, loadPortfolioSwiper } from './libs/swiper';
 import {
   addSliderCounters,
   focusServicesCard,
@@ -12,8 +12,8 @@ import { formValidation } from './modules/form-validation';
 import { backToTop } from './modules/back-to-top';
 import { initMap } from './modules/initMap';
 
-const headerSliderWrapper = document.querySelector('.header-swiper__wrapper');
-const headerSliderPagination = document.querySelector('.header__pagination');
+const heroSwiperWrapper = document.querySelector('.hero-swiper__wrapper');
+const heroSwiperPagination = document.querySelector('.hero__pagination');
 const servicesLinkWrappers = document.querySelectorAll('.services-card__link-wrapper');
 const servicesLinks = document.querySelectorAll('.services-card__link');
 const servicesBtns = document.querySelectorAll('.services-card__arrow-block');
@@ -22,10 +22,10 @@ const requestCheckLabel = document.querySelector('.request-form__label-check');
 const portfolioBtnWrapper = document.querySelector('.portfolio__swiper-wrapper');
 const aboutBtnWrapper = document.querySelector('.about__wrapper');
 
-// Загрузка слайдера в хедере
-loadHeaderSwiper();
+// Загрузка слайдера в hero
+loadHeroSlider();
 // Создание динамического счётчика (количество слайдов на странице)
-addSliderCounters(headerSliderWrapper, headerSliderPagination);
+addSliderCounters(heroSwiperWrapper, heroSwiperPagination);
 
 // Открытые бургер меню
 openBurger();

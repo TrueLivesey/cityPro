@@ -1,0 +1,151 @@
+@import './blocks/hero-swiper';
+
+.hero {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  &__swiper-block {
+    position: relative;
+    min-height: 46.875rem;
+  }
+
+  &__container {
+    max-width: 71.875rem;
+    padding-left: 3.75rem;
+    padding-right: 1.875rem;
+    margin: 0 auto;
+    margin-top: -17.625rem;
+  }
+
+  &__swiper-block {
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      right: 0;
+      width: 100%;
+      min-width: 70.3125rem;
+      height: 100px;
+      z-index: 1;
+      background: no-repeat center url('../images/hero-semicircle.svg');
+      background-size: cover;
+    }
+  }
+
+  &__btn {
+    position: relative;
+    margin-bottom: 3.1875rem;
+    z-index: 2;
+  }
+
+  &__pagination-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 2px;
+    z-index: 2;
+  }
+
+  &__counter {
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+    &:nth-of-type(1) {
+      margin-right: 1.3125rem;
+    }
+
+    &:nth-of-type(2) {
+      margin-left: 1.0625rem;
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    gap: 1.25rem;
+
+    .swiper-pagination-bullet {
+      display: block;
+      width: 3.1875rem;
+      height: 0.25rem;
+      cursor: pointer;
+      border-radius: 6.25rem;
+      background-color: var(--color-white);
+      transition: background-color var(--transition);
+    }
+
+    .swiper-pagination-bullet-active {
+      background-color: var(--color-blue-darker);
+    }
+  }
+
+  &  ~ .header-swiper__container {
+    box-sizing: content-box;
+    max-width: 65.75rem;
+    padding-left: 3.75rem;
+    padding-right: 2.5rem;
+  }
+}
+
+// ----- Медиа-запросы -----
+// 1024px
+@include media('max', 'xl') {
+  .hero {
+    &__swiper-block {
+      min-height: 55rem;
+
+      &::after {
+        content: none;
+      }
+    }
+
+    &__btn {
+      width: 100%;
+    }
+  }
+}
+
+// 768px
+@include media('max', 'lg') {
+  .hero {
+    &__swiper-block {
+      min-height: 49rem;
+    }
+  }
+}
+
+// 480px
+@include media('max', 'sm') {
+  .hero {
+    &__swiper-block {
+      min-height: 37rem;
+    }
+
+    &__container.hero__container {
+      margin-top: calc(-13rem + 15vw);
+    }
+
+    &__controls {
+      width: 100%;
+      padding: 0 1.25rem 0;
+    }
+
+    &__counter {
+      &:nth-child(2) {
+        margin-left: 1.1875rem;
+      }
+    }
+
+    &__btn {
+      margin-bottom: calc(6.25rem - 15vw);
+    }
+
+    &__pagination-wrapper {
+      justify-content: space-between;
+      padding: 0;
+    }
+  }
+}

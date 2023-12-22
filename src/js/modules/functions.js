@@ -2,11 +2,11 @@ import { el, setChildren, mount } from 'redom';
 
 // Создание DOM элементов
 function createSliderCounters() {
-  const counter = el('span.header__counter');
-  const counter2 = el('span.header__counter');
+  const counter = el('span.hero__counter');
+  const counter2 = el('span.hero__counter');
 
-  counter.id = 'header-counter';
-  counter2.id = 'header-counter-2';
+  counter.id = 'hero-counter';
+  counter2.id = 'hero-counter-2';
 
   return { counter, counter2 };
 }

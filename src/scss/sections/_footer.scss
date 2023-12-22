@@ -76,11 +76,11 @@
         outline: var(--outline-blue);
 
         .footer__descr-dev {
-          color: var(--color-blue);
+          color: var(--color-blue-darker);
         }
 
         .footer__icon-dev-wrapper {
-          fill: var(--color-blue);
+          fill: var(--color-blue-darker);
         }
       }
 
@@ -96,11 +96,11 @@
 
       &:active {
         .footer__descr-dev {
-          color: var(--color-blue-darker);
+          color: var(--color-blue-darker-2);
         }
 
         .footer__icon-dev-wrapper {
-          fill: var(--color-blue-darker);
+          fill: var(--color-blue-darker-2);
         }
       }
     }
@@ -115,21 +115,21 @@
         outline: var(--outline-blue);
 
         .footer__descr-dev {
-          color: var(--color-blue);
-        }
-
-        .footer__icon-dev-wrapper {
-          fill: var(--color-blue);
-        }
-      }
-
-      &:active {
-        .footer__descr-dev {
           color: var(--color-blue-darker);
         }
 
         .footer__icon-dev-wrapper {
           fill: var(--color-blue-darker);
+        }
+      }
+
+      &:active {
+        .footer__descr-dev {
+          color: var(--color-blue-darker-2);
+        }
+
+        .footer__icon-dev-wrapper {
+          fill: var(--color-blue-darker-2);
         }
       }
     }

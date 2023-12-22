@@ -8,6 +8,12 @@
     gap: 0.625rem;
     min-width: 12.5rem;
     transition: color var(--transition-link);
+
+    .address__descr--underline {
+      &::before {
+        transition: var(--transition-link);
+      }
+    }
   }
 
   &__schedule {
@@ -88,26 +94,29 @@
       &:focus-visible {
         outline-offset: var(--outline-offset);
         outline: var(--outline-blue);
-        color: var(--color-blue);
+        color: var(--color-blue-darker);
 
-        .address__icon-wrapper::before {
-          background-color: var(--color-blue);
+        .address__icon-wrapper::before,
+        .address__descr--underline::before {
+          background-color: var(--color-blue-darker);
         }
       }
 
       &:hover {
         color: var(--color-blue);
 
-        .address__icon-wrapper::before {
+        .address__icon-wrapper::before,
+        .address__descr--underline::before {
           background-color: var(--color-blue);
         }
       }
 
       &:active {
-        color: var(--color-blue-darker);
+        color: var(--color-blue-darker-2);
 
-        .address__icon-wrapper::before {
-          background-color: var(--color-blue-darker);
+        .address__icon-wrapper::before,
+        .address__descr--underline::before {
+          background-color: var(--color-blue-darker-2);
         }
       }
     }
@@ -121,18 +130,20 @@
         &:focus-visible {
           outline-offset: var(--outline-offset);
           outline: var(--outline-blue);
-          color: var(--color-blue);
+          color: var(--color-blue-darker);
   
-          .address__icon-wrapper::before {
-            background-color: var(--color-blue);
+          .address__icon-wrapper::before,
+          .address__descr--underline::before {
+            background-color: var(--color-blue-darker);
           }
         }
   
         &:active {
-          color: var(--color-blue-darker);
+          color: var(--color-blue-darker-2);
   
-          .address__icon-wrapper::before {
-            background-color: var(--color-blue-darker);
+          .address__icon-wrapper::before,
+          .address__descr--underline::before {
+            background-color: var(--color-blue-darker-2);
           }
         }
       }

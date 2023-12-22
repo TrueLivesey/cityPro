@@ -2,8 +2,8 @@ import Swiper from 'swiper';
 import { Pagination, Navigation, Autoplay, EffectCreative, FreeMode } from 'swiper/modules';
 import 'swiper/css';
 
-function loadHeaderSwiper() {
-  const swiper = new Swiper('.header-swiper', {
+function loadHeroSlider() {
+  const swiper = new Swiper('.hero-swiper', {
     modules: [Pagination, Autoplay],
 
     loop: true,
@@ -14,12 +14,12 @@ function loadHeaderSwiper() {
     },
 
     pagination: {
-      el: '.header__pagination',
+      el: '.hero__pagination',
       clickable: true,
     },
 
     breakpoints: {
-      320: {
+      0: {
         speed: 500,
       },
 
@@ -46,13 +46,13 @@ function loadServicesSwiper() {
     },
 
     breakpoints: {
-      320: {
+      0: {
         slidesPerView: 1,
         loop: true,
         spaceBetween: 30,
       },
 
-      480: {
+      481: {
         spaceBetween: 0,
         slidesPerView: 'auto',
         loop: false,
@@ -101,8 +101,8 @@ function loadPortfolioSwiper() {
       },
 
       navigation: {
-        nextEl: '.portfolio-swiper__next',
-        prevEl: '.portfolio-swiper__prev',
+        nextEl: '.portfolio-swiper-next',
+        prevEl: '.portfolio-swiper-prev',
       },
 
       pagination: {
@@ -210,4 +210,4 @@ function loadPortfolioSwiper() {
   });
 }
 
-export { loadHeaderSwiper, loadServicesSwiper, loadPortfolioSwiper };
+export { loadHeroSlider, loadServicesSwiper, loadPortfolioSwiper };
