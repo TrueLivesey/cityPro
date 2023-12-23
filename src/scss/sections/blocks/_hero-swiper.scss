@@ -1,7 +1,30 @@
 .hero {
   .hero-swiper {
+    position: relative;
     overflow: hidden;
     background-color: var(--color-section-bg);
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: calc((100vw - 1170px) / 2);
+      height: 6.25rem;
+      background-color: var(--color-white);
+      z-index: 2;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      right: 0;
+      width: calc((100vw - 1170px) / 2);
+      height: 6.25rem;
+      background-color: var(--color-white);
+      z-index: 2;
+    }
   
     // Слайды
     .hero-slide {
