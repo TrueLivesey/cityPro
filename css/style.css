@@ -1266,8 +1266,29 @@ body.lock {
   }
 }
 .hero .hero-swiper {
+  position: relative;
   overflow: hidden;
   background-color: var(--color-section-bg);
+}
+.hero .hero-swiper::before {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: calc((100vw - 1170px) / 2);
+  height: 6.25rem;
+  background-color: var(--color-white);
+  z-index: 2;
+}
+.hero .hero-swiper::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  right: 0;
+  width: calc((100vw - 1170px) / 2);
+  height: 6.25rem;
+  background-color: var(--color-white);
+  z-index: 2;
 }
 .hero .hero-swiper .hero-slide {
   position: relative;
@@ -1745,7 +1766,6 @@ body.lock {
   height: 100px;
   z-index: 1;
   background: no-repeat center url("../images/hero-semicircle.svg");
-  background-size: cover;
 }
 .hero__btn {
   position: relative;
@@ -3414,7 +3434,7 @@ body.lock {
   right: -1px;
   width: calc(30.25rem + 18vw);
   height: 5.875rem;
-  background: no-repeat left top url("../images/request-bg.svg");
+  background: no-repeat right top url("../images/request-bg.svg");
   background-size: contain;
   z-index: 1;
 }
